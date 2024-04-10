@@ -1,0 +1,13 @@
+Ecrã do quartel.
+
+Ligações para:
+- Território
+
+Permite:
+- Desenvolver o quartel
+- Recrutar tropas
+
+Dá informação sobre:
+- custos de recrutamento das tropas
+- Próxima missão do Quartel e Prémio correspondente (próximo exercício desbloqueável)
+

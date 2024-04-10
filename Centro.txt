@@ -1,0 +1,12 @@
+Onde se criam e iniciam rotinas
+
+Ligações para:
+- Iniciar Rotina*
+- Criar Nova Rotina*
+
+Permite:
+- Selecionar uma das rotinas disponíveis.
+
+Dá informação sobre:
+- Prémio total obtido quando se realiza a rotina selecionada.
+

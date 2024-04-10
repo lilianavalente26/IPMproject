@@ -1,0 +1,39 @@
+Nome da aplicação: Fambulous
+
+Propósito:
+- promover fitness num grupo familiar.
+
+Modo de utilização:
+
+- modo online: quando os membros do grupo estão online em simultaneo, usa-se a app para iniciar uma rotina pré-definida. Tem temporizador e avisos sonoros.
+	NOTA: no modo online, os participantes recebem um bonus de pontuação.
+	//(para fomentar a cooperação)
+- modo offline: cada individuo pode fazer os exercícios sozinho, com temporizador e avisos sonoros, e obter a pontuação respetiva.
+	//(para permitir a cada um fazer a atividade consoante a disponibilidade)
+
+Features:
+- Criar exercício:
+	- descricao do exercicio;
+	//(com ou sem vídeo / animação)
+	- pontuação atribuida;
+	//(para fomentar competitividade)
+	- classificação de tipo (cardio / força / flexibilidade / equilibrio)
+	- classificação de área (braços / pernas / costas)
+	//(para ajudar a criar rotinas que sejam equilibradas, assim como para
+	// permitir achievements variados, que mantém todos os membros da família,
+	// com vários interesses, investidos na competição)
+
+- Criar rotina:
+	- "smart" (com sugestoes)
+	- "default" (com alguns exercícios base)
+	//(para quem só quer usar o mínimo da aplicação)
+	- "custom"
+
+- Pódio / Liga:
+	Atribuição de Achievements aos membros do grupo consoante vários critérios:
+	- "o que exercita mais cedo / tarde"
+	- "o mais dedicado da semana" (q fez mais vezes)
+	- "o mais pontuado"
+	- "o mais amigável"
+	- "o mais forte / flexivel / resistente ..."
+

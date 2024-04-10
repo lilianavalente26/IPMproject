@@ -1,0 +1,13 @@
+Ecrã anterior a iniciar uma rotina.
+
+Ligações para:
+- Ecrã de execução de tarefa (cronómetro etc.)
+(Centro?)
+
+Permite:
+- Definir a dificuldade da rotina (+5seg para cada exercicio, -5seg de descanso)
+- Começar a rotina*.
+
+Dá informação sobre:
+- Prémio total
+- Tarefas que vão ser executadas na rotina

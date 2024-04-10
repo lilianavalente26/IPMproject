@@ -1,0 +1,48 @@
+Fitness Clash:
+
+Tarefas a implementar:
+- Criar uma Rotina no Centro, usando exercícios já aprendidos, e realizá-la.
+- Desenvolver o Quartel, ganhando acesso a 2 novos exercícios de Cardio.
+- Recrutar 4 Lanceiros e Atacar a Aldeia de outro membro do grupo com 3 deles.
+
+Estabeleço aqui ainda que:
+
+Existe uma lista de exercícios já aprendidos (A LISTA DE TAREFAS). Desta lista podem ser realizados exercícios individuais, ou então escolhidos exercícios para criar uma ROTINA completa. Fazer os exercícios numa rotina permite escolher um bonus a atribuir, assim como dar um nome a uma rotina personalizada.
+
+É no CENTRO que se fazem as rotinas. O centro tem um número limitado de rotinas personalizáveis, que pode ser aumentado, quando se desenvolve o centro...
+
+Há 4 recursos: 
+- Ouro (moedas), 
+- Força (bigorna), 
+- Cardio (coração), 
+- Flexibilidade (estrela);
+
+Os exercícios I são sempre:
+- 20s de exercício, 10s de intervalo
+- prémio de 10 Ouro/segundo (200 por exercicio) + 1 de Força/Cardio/Flex, respetivamente dependendo do Edifício onde ele foi aprendido.
+
+Os exercícios II são:
+- 30s de exercício, 10s de intervalo
+- prémio de 15 Ouro/segundo (450 por exercício) + 1 (...).
+
+Há 6 exercícios disponíveis no total: 
+No Quartel (Cardio):
+- Jumping Jacks I 
+- Mountain Climbers I
+No Mercado (Flex):
+- Flamingo I
+- Tocar Os Calcanhares I
+Na Quinta (Força):
+- Flexões I
+- Abdominais I
+
+Desenvolver o Quartel:
+custa: 5000 Ouro, 5 Bigornas, 20 Corações, 5 Estrelas
+dá acesso a:
+- Jumping Jacks II
+- Mountain Climbers II
+
+Recrutar 1 Lanceiro:
+custa: 100 Ouro, 1 Bigorna, 2 Corações.
+
+

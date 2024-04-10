@@ -1,0 +1,22 @@
+Enunciado da TP5 (e Projeto A)
+Tarefas e Protótipos de Baixa Fidelidade
+
+Notem que os materiais devem estar prontos antes da aula.
+Projeto A
+
+Este projeto consiste no desenho iterativo de uma interface para o contexto que vos foi atribuído. Tanto a interface, como o desenho físico do dispositivo, ficam ao vosso critério. 
+Antes da aula
+
+    O grupo deve definir o tema e objetivos principais do seu trabalho (1 parágrafo).
+    O grupo deve definir 3 tarefas relevantes da interface, que devem ser complementares (isto é, não serem repetições do mesmo tipo de tarefa), devem ajudar a definir elementos relevantes da aplicação, e devem ter dificuldades diferentes (ex: 1 simples, 1 média, 1 difícil). Fazer login não é uma tarefa válida.
+    Cada aluno, individualmente, tem de fazer um storyboard de cada tarefa, e um protótipo de baixa fidelidade (PBF) que respeite as três tarefas.
+
+Durante a aula
+
+    Testarão, durante a aula, com os colegas de outros grupos, usando a técnica de Wizard of Oz. Cada grupo deverá garantir que, durante o teste, existe um elemento a servir de computador e outro a servir de monitor/observador, que deve recolher todos os dados relevantes (comentários, hesitações, erros, ...).
+
+Depois da aula
+
+    Em grupo, tomarem decisões sobre o que funciona melhor em cada PBF
+    Escrever um pequeno relatório de avaliação, onde apresentam as observações e principais conclusões.
+    Começar a fazer o protótipo funcional 1

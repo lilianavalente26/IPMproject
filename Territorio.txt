@@ -1,0 +1,13 @@
+Representação da comunidade.
+
+Ligações para:
+- Aldeias vizinhas
+- Ecrã de Ataque* / Troca / Mensagem
+
+Permite:
+- definir o território como fechado ou aberto (aceita mais familiares ou nao)
+- gerar códigos de acesso ao território e copiá-los para o clipboard
+
+Dá informação sobre:
+(nada)
+

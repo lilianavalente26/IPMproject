@@ -1,0 +1,16 @@
+Onde se customizam novas rotinas
+
+Ligações para:
+(nada)
+(Centro?)
+
+Permite:
+- Adicionar uma nova tarefa à lista de exercícios da rotina
+- Escolher um bonus para esta rotina
+- Confirmar a definição de uma nova Rotina.
+- Trocar a ordem ou apagar items da lista da rotina em edição.
+
+Dá informação sobre:
+- Prémio total dos exercícios escolhidos até agora.
+- Tipo de cada exercício escolhido até agora (força, braços)
+

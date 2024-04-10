@@ -1,0 +1,14 @@
+Lista de todas as tarefas (exercícios) que foram desbloqueados
+
+Ligações para:
+- Ecrã de execução de tarefa (cronómetro etc.)
+- Criar Nova Rotina
+
+Permite:
+- Selecionar tarefas diferentes.
+
+Dá informação sobre:
+- Prémio de cada tarefa.
+- Tipo de cada tarefa (força, braços)
+- Edifício responsável por cada tarefa.
+- Se a tarefa faz parte de uma missão.

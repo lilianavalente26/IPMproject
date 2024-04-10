@@ -1,0 +1,25 @@
+Descrição dos objetivos:
+1. Aplicação de fitness familiar: Desenvolver um protótipo de uma aplicação móvel de fitness que promova a interação dentro da família, encorajando os membros a colaborar e competir de forma amigável para se manterem ativos e saudáveis. As funcionalidades da aplicação podem incluir a definição de metas individuais e coletivas, o registo das suas atividades físicas diárias, a partilha de resultados e conquistas, a possibilidade de desafiar outros membros da família para competições, bem como trocar dicas e conselhos sobre exercícios e nutrição. Pode incluir notificações personalizadas, progresso em tempo real, rankings familiares, planos de treino adaptados ao nível de condicionamento físico de cada utilizador, entre outros. Parte do desafio é desenhar formas criativas de incentivar a participação dos utilizadores, considerando a usabilidade e minimização de tempo na utilização.
+
+Objetivos específicos:
+a) - definição de metas individuais e coletivas;
+b) - registo de atividades físicas diárias;
+c) - partilha de resultados e conquistas;
+d) - criação e personalização de desafios entre membros;
+e) - partilha de dicas e conselhos sobre exercícios e nutrição;
+f) - notificações personalizadas (?);
+g) - progresso em tempo real (?);
+h) - rankings de grupo;
+i) - planos de treino adaptados ao utilizador;
+j) - garantir a participação de utilizadores, minimizando o tempo de utilização.
+
+Timeline:
+De protótipos de baixa fidelidade (3, 3 tarefas) a 1 protótipo de alta fidelidade (6+ tarefas)
+Ao longo de 5 aulas (e fora delas):
+
+    25/03 - TP5: 3 Tarefas, critérios, e protótipos de baixa fidelidade (1 por elemento) > avaliação qualitative usando Wizard-of Oz
+    08/04 - TP6: Protótipo Functional 1 > Feedback dos docents
+    15/04 - TP7: Avaliação Heurística do PF 1 melhorado
+    22/04 - TP8: Avaliação quantitativa do PF2
+    29/04 - TP9: Apresentação dos projetos 
+

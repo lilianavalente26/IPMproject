@@ -1,0 +1,81 @@
+Considerações iniciais:
+Uma vez que se trata de um projeto de IPM, é importante que no inicio cada um de nós possa escolher o interface que quiser - para depois os podermos comparar e escolher o melhor, ou as melhores partes de alguns. Uma vez que se trata de um jogo, em que a componente visual é muito importante, acho que é importante definir alguns conceitos base - que todos temos de incorporar, de modo a garantir que as mecanicas do jogo são as mesmas - e deixar ainda assim espaço livre para escolher COMO é que os queremos interligar. Se não fizermos assim, e cada um decidir as mecanicas por si, acho que seria dificil de comparar a performance das tarefas entre nós, para escolher a melhor.. (seria como comparar laranjas com bananas... o que poderia ser útil, mas demasiado demorado para estar a desenvolver em paralelo)
+Por isso, estes são os conceitos e as mecânicas que eu sugiro:
+
+IDEIA BASE:
+A família regista-se num TERRITÓRIO, e cada elemento tem a sua ALDEIA. Realizar TAREFAS (exercício físico com a típica aplicação do cronómetro, que não interessa implementar) permite acumular RECURSOS, que depois são usados para construir EDIFÍCIOS e treinar POPULAÇÃO. Os edifícios permitem descobrir novas tarefas, a população cumpre ordens dentro e fora da aldeia.
+É possível estabelecer trocas, competir em desenvolvimento ou atacar as aldeias dos outros membros da família, desse modo fomentando a competição.
+
+RECURSOS:
+existem 4 recursos base:
+
+- OURO - ganho quando se completa qualquer TAREFA. A quantia ganha depende da dificuldade e duração.
+- FORÇA / FLEXIBILIDADE / CARDIO - ganha-se 1 unidade quando se completa uma TAREFA com a tag respetiva @{força/flexibilidade/cardio}
+
+e 6 recursos secundários:
+- PEITO / COSTAS / BRAÇOS / ABDOMINAIS / PERNAS / OMBROS - tambem com a @tag respetiva.
+
+LISTA DE TAREFAS:
+consiste no repertório de exercícios disponíveis. Acrescentam-se exercícios quando são "comprados" no edifício correspondente.
+
+EDIFÍCIOS:
+existem 4 edifícios base:
+
+- CENTRO DA ALDEIA - edifício principal, relacionado com o OURO. Representa o estado geral da vila. Desenvolver o CENTRO permite criar e personalizar rotinas, escolhendo as tarefas em que estivermos mais interessados, e obtendo bónus quando completada. O tipo de bónus também pode aqui ser personalizado.
+
+- MERCADO - relacionado com FLEXIBILIDADE. Permite acrescentar TAREFAS com @flexibilidade à LISTA DE TAREFAS. Desenvolver o MERCADO permite acumular mais recursos 
+(ex. sem mercado, temos -> OURO: 50/100, FORÇA: 4/10, FLEXIBILIDADE: 4/10, CARDIO: 4/10; mas se mercado em lvl 1 -> OURO: 50/200, FORÇA: 4/15, FLEXIBILIDADE: 4/15, CARDIO: 4/15).
+(extra: quando o mercado está em lvl adequado, dá acesso ao novo edifício: BANCO - gera recursos enquando se está offline, mas requer mercadores para funcionar)
+
+- QUARTEL - relacionado com CARDIO. Permite acrescentar novos exercícios com @cardio a LISTA DE TAREFAS. Desenvolver o QUARTEL permite recrutar tropas diferentes, assim como melhorar essas tropas.
+(extra: quando o quartel está em lvl adequado, dá acesso à função MILÍCIA, que permite usar MERCADORES E AGRICULTORES como se fossem tropas)
+
+- QUINTA - relacionado com FORÇA. Permite acrescentar novos exercícios com @forca à LISTA DE TAREFAS. Desenvolver a QUINTA permite desbloquear novos bonus nos outros edifícios.
+(extra: quando a quinta está em lvl adequado, dá acesso aos edificios: SILO - previne que se percam recursos quando somos atacados; CAVALARIÇAS - dá acesso a tropas de cavalaria.)
+
+POPULAÇÃO:
+existem 2 tipos de população: cidadãos e tropas
+cidadãos:
+
+- CONSTRUTORES - usados para construir e desenvolver edifícios. 
+Requer= {tags: {@força: 2, @flexibilidade: 1, @cardio: 1}, ouro: 20}
+Os construtores são contratados para uma unica obra, depois voltam à sua vida normal.
+
+- MERCADORES - usados para trocar com as aldeias vizinhas. Cada mercador pode carregar consigo até 500 OURO e ser enviado para uma ALDEIA do TERRITÓRIO com um pedido específico de um outro RECURSO. O responsável por essa aldeia pode então decidir aceitar ou recusar a troca. 
+Requer= {tags: {@força: 10, @flexibilidade: 10, @cardio: 10}, ouro: 5000}
+Os mercadores continuam a ser mercadores depois de treinados para isso.
+
+- AGRICULTORES - usados para dar bonus temporarios. Cada agricultor está associado a um RECURSO secundário específico. Quando chega ao CENTRO DA ALDEIA confere um bonus selecionado a todas as TAREFAS com uma @tag relacionada com o RECURSO que lhe compete. (ex. um agricultor de COSTAS é enviado da QUINTA com um bonus de +2 CARDIO durante 30 min. Isto significa que quando ele chegar ao CENTRO DA ALDEIA - por exemplo, daí por 1h - ativa um bonus que, durante 30 min, faz com que todos as TAREFAS completadas que tenham a tag @costas confiram +2 CARDIO aos recursos da aldeia.)
+Requer= {tags: {@força: 20, @flexibilidade: 10, @cardio: 10}, ouro: 5000}
+Os agricultores continuam a ser agricultores depois de treinados para isso. Cada ida ao CENTRO DA ALDEIA tem ainda um custo de 500 OURO.
+
+tropas:
+(as tropas têm valores de ataque e defesa, assim como fraquezas especificas. O calculo do resultado de uma batalha é complicado e acho que não vale a pena desenvolver.)
+
+os custos de qualquer tropa são pagos no momento em que são treinados, mas acresce um valor de ouro por hora em que estão no ativo. 
+
+- LANCEIRO - usados para atacar e defender a aldeia. Cada lanceiro consegue transportar 20 OURO de saque. 
+Estatísticas= {Ataque: 2, Defesa: 2, Fraqueza: ARQUEIRO}.
+Requer= {tags: {@força: 3, @flexibilidade: 0, @cardio: 5}, ouro: 100, ouro-por-dia(GPD): 5}
+- ARQUEIRO - usados para defesa. Cada arqueiro consegue transportar 1 FLEXIBILIDADE de saque. 
+Estatísticas= {Ataque: 1, Defesa: 3 Fraqueza: CAVALARIA}.
+Requer= {tags: {@força: 2, @flexibilidade: 3, @cardio: 2}, ouro: 150, ouro-por-dia(GPD): 7}
+- CAVALEIRO (Requer Cavalariça) - usados para ataque. Cada cavaleiro consegue transportar 100 OURO de saque, assim como 1 FLEXIBILIDADE, 1 FORÇA e 1 CARDIO. 
+Estatísticas= {Ataque: 3, Defesa: 1, Fraqueza: LANCEIRO}.
+Requer= {tags: {@força: 5, @flexibilidade: 5, @cardio: 5}, ouro: 500, ouro-por-dia(GPD): 10}
+
+
+Para efeitos do protótipo, 
+considerem-se os seguintes exercícios:
+- flexões de braços - {tags: [@força, @peito], ouro-por-segundo(GPS): 5}
+- abdominais simples - {tags: [@força, @abdominais], ouro-por-segundo(GPS): 5}
+- corrida no lugar - {tags: [@cardio, @pernas], ouro-por-segundo(GPS): 5}
+
+considerem-se os seguintes bonus:
+- @forca = +2 GPS
+- durante 30 min, +2 CARDIO
+
+
+
+
+

@@ -1,0 +1,15 @@
+A moldura da aplicação, comum à maioria dos ecrãs.
+
+Ligações para:
+- Aldeia*
+- "Quick Start"
+- Definições
+- (Centro?)
+
+Permite:
+(nada)
+
+Dá informação sobre:
+- Recursos* atualizados do utilizador.
+
+

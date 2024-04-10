@@ -1,0 +1,19 @@
+Representa a aldeia do utilizador, funciona como menu principal.
+
+Ligações para:
+- Quartel*
+- Mercado
+- Quinta
+- Centro*
+- População
+- Território*
+
+Permite:
+(nada)
+
+Dá informação sobre:
+(nada)
+OU
+o nome da aldeia escolhida pelo utilizador.
+OU
+tempo para determinada unidade terminar o seu trabalho (construção, ataques, trocas...)
