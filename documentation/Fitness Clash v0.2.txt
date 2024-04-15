@@ -1,9 +1,9 @@
 Fitness Clash:
 
 Tarefas a implementar:
-- Criar uma Rotina no Centro, usando exercícios já aprendidos, e realizá-la.
-- Desenvolver o Quartel, ganhando acesso a 2 novos exercícios de Cardio.
-- Recrutar 4 Lanceiros e Atacar a Aldeia de outro membro do grupo com 3 deles.
+- Tarefa 1: Desenvolver o Quartel, ganhando acesso a 2 novos exercícios de Cardio.
+- Tarefa 2: Tentar recrutar lanceiros, nao ter recursos suficientes, realizar A Minha Rotina no Centro para ganhar recursos.
+- Tarefa 3: Recrutar 4 Lanceiros e Atacar a Aldeia de outro membro do grupo com 3 deles.
 
 Estabeleço aqui ainda que:
 
