@@ -1,0 +1,51 @@
+body {
+    text-align: center;
+}
+
+.mainBlock {
+    display: none;
+}
+
+.container-fluid {
+    padding: 2% 15%;
+}
+
+.icon {
+    width: 60%;
+    height: auto;
+}
+.footer-nav-icon{
+    width: 60%;
+    height: auto;
+}
+
+.resource {
+    width: 25px;
+    height: 25px;
+}
+
+.config {
+    text-align: end;
+}
+
+.feature-box {
+    text-align: center;
+    padding: 3%;
+}
+
+.footer-box {
+    text-align: center;
+    padding: 4.5%;
+}
+#quick-start-icon {
+    width: 100;
+    height: auto;
+}
+
+#resources .container-fluid {
+    padding: 3% 7% 2%;
+}
+
+.screen-title {
+    text-align: center;
+}

@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title>Fitness Clash</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <div class="resources-div" id="resources">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="resource-display col-1">
+                    <img src="assets\ouro.png" class="resource">
+                    <label id="gold"></label>
+                </div>
+                <div class="resource-display col-1">
+                    <img src="assets\cardio.png" class="resource">
+                    <label id="heart"></label>
+                </div>
+                <div class="resource-display col-1">
+                    <img src="assets\forca.png" class="resource">
+                    <label id="str"></label>
+                </div>
+                <div class="resource-display col-1">
+                    <img src="assets\flexibilidade.png" class="resource">
+                    <label id="flex"></label>
+                </div>
+                <div class="resource-display col-4"></div>
+                <div class="config col-4">
+                    <a href=""><img src="assets\config.png" width="50" height="50"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mainBlock" id="aldeia">
+        <h1 class="screen-title">Aldeia.</h1>
+        <div class="container-fluid">
+            <div class=row>
+                <div class="feature-box col-md-3 offset-md-2" id="quinta-icon">
+                    <a href="\" onclick="openBlock(0)"><img class="icon" src="assets\granja.png"></a>
+                </div>
+                <div class="feature-box col-md-3 offset-md-2" id="territorio-icon">
+                    <a href="\" onclick="openBlock(3)"><img class="icon" src="assets\compass.png"></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="feature-box col-md-3 offset-md-2" id="quartel-icon">
+                    <a href="\" onclick="openBlock(2)"><img class="icon" src="assets\castelo.png"></a>
+                </div>
+                <div class="feature-box col-md-3 offset-md-2" id="mercado-icon">
+                    <a href="\" onclick="openBlock(0)"><img class="icon" src="assets\tienda.png"></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="feature-box col-md-3 offset-md-2" id="populacao-icon">
+                    <a href="\" onclick="openBlock(0)"><img class="icon" src="assets\villager.png"></a>
+                </div>
+                <div class="feature-box col-md-3 offset-md-2" id="centro-icon">
+                    <a href="\" onclick="openBlock(1)"><img class="icon" src="assets\fuente.png"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mainBlock" id="centro">
+        <h1 class="screen-title">Centro da Aldeia.</h1>
+        <!-- PAREI AQUI -->
+        <table>
+            <tr>
+                <th><a href=""><img src="assets\sword.png" width="100" height="100"></a></th>
+                <th>Iniciar rotina</th>
+                <th><a href=""><img src="assets\write.png" width="100" height="100"></a></th>
+                <th>Criar rotina</th>
+            </tr>
+        </table>
+    </div>
+    <div class="mainBlock" id="quartel">
+        <h1 class="screen-title">Quartel.</h1>
+        <div class="container-fluid">
+            <table>
+                <tr>
+                    <th>Próxima missão (!)</th>
+                    <th>Prémio</th>
+                </tr>
+                <tr>
+                    <td>Fazer burpees I - 0/5</td>
+                    <td>triceps sentado I</td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <h2>Recrutar</h2>
+            <table id="troopTable">
+                <tr>
+                    <td><button onclick="addResource(-100, -3, -2, 0); addTroop(0); addElement()">Lanceiro <span
+                                class="lanceNr"></span></button></td>
+                    <td><img src="assets/ouro.png" width="25" height="25">100</td>
+                    <td><img src="assets/cardio.png" width="25" height="25">3</td>
+                    <td><img src="assets/forca.png" width="25" height="25">2</td>
+                </tr>
+                <tr>
+                    <td><button onclick="addResource(-150, -2, -2, -2); addTroop(1); removeElement(this)">Arqueiro
+                            <span class="archeNr"></span></button></td>
+                    <td><img src="assets/ouro.png" width="25" height="25">150</td>
+                    <td><img src="assets/cardio.png" width="25" height="25">2</td>
+                    <td><img src="assets/forca.png" width="25" height="25">2</td>
+                    <td><img src="assets/flexibilidade.png" width="25" height="25">2</td>
+                </tr>
+            </table>
+            <br>
+            <table>
+                <tr>
+                    <td><a href=""><img src="assets/compass.png" width="100" height="100"></a></td>
+                    <td>
+                        <h2>Preparar Ataque</h2>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="mainBlock" id="territorio">
+        <h1>
+            Territórios.
+        </h1>
+        <table>
+            <tr>
+                <th><img src="assets\aldeias.png" width="100" height="100"></a></th>
+                <th>Primopolis</th>
+                <th><img src="assets\aldeias2.png" width="100" height="100"></th>
+                <th>Aldeia-mãe</th>
+            </tr>
+            <tr>
+                <th><img src="assets\aldeias3.png" width="100" height="100"></a></th>
+                <th>Tio Ville</th>
+                <th><img src="assets\aldeias4.png" width="100" height="100"></th>
+                <th>Irmãodade</th>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <br>
+    </div>
+    <div class="footer" id="footer-navigation">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="footer-box col-md-3 offset-md-1" id="return-to-aldeia">
+                <a href="/" onclick="openBlock(0)"><img class="footer-nav-icon" src="assets\fuente.png"></a>
+                </div>
+                <div class="footer-box col-md-3 offset-md-1" id="quick-start-icon">
+                    <button type="button" class="btn btn-success btn-lg"><img class="footer-nav-icon" src="assets\start-button.png"></button>
+                </div>
+                <div class="footer-box col-md-3 offset-md-1" id="return-to-aldeia">
+                   <a href="/" onclick="openBlock(0)"><img class="footer-nav-icon" src="assets\write.png"></a>
+                </div>
+                <br>
+                <br>
+                <a href="https://www.flaticon.com/free-icons/start-button" title="start button icons">Start button icons created by Freepik - Flaticon</a>
+            </div>
+        </div>
+</body>
+<script>
+
+    var gold = 1000;
+    var heart = 5;
+    var str = 5;
+    var flex = 4;
+    var lance = 2;
+    var arche = 2;
+
+    $(document).ready(function () {
+        //CODE GOES HERE
+
+        //ENABLE "ALDEIA" AT STARTUP
+        $('#aldeia').show();
+
+        //UPDATE RESCOURCES
+        $("#gold").html(gold);
+        $("#heart").html(heart);
+        $("#str").html(str);
+        $("#flex").html(flex);
+
+        $(".lanceNr").html(lance)
+        $(".archeNr").html(arche)
+
+    });
+
+    function addResource(goldVal, heartVal, strVal, flexVal) {
+
+        if (gold + goldVal < 0 || heart + heartVal < 0 || str + strVal < 0 || flex + flexVal < 0) return false;
+
+        gold += goldVal;
+        heart += heartVal;
+        str += strVal;
+        flex += flexVal;
+
+        //UPDATE RESCOURCES
+        $("#gold").html(gold);
+        $("#heart").html(heart);
+        $("#str").html(str);
+        $("#flex").html(flex);
+    }
+
+    function openBlock(blockValue) {
+
+        $(".mainBlock").hide();
+        switch (blockValue) {
+            case 0:
+                $("#aldeia").show();
+                break;
+            case 1:
+                $("#centro").show();
+                break;
+            case 2:
+                $("#quartel").show();
+                break;
+            case 3:
+                $("#territorio").show();
+                break;
+            default:
+                $("#aldeia").show();
+                break;
+        }
+    }
+    function addTroop(troopNr) {
+        switch (troopNr) {
+            case 0:
+                lance++
+                $(".lanceNr").html(lance)
+                break;
+            case 1:
+                arche++
+                $(".archeNr").html(arche)
+                break;
+        }
+    }
+    function addElement() {
+        $("#troopTable").append(`
+            <tr>
+            <td><button onclick="addResource(-150, -2, -2, -2); addTroop(1);">Arqueiro <span class="archeNr"></span></button></td>
+            <td><img src="assets/ouro.png" width="25" height="25">150</td>
+            <td><img src="assets/cardio.png" width="25" height="25">2</td>
+            <td><img src="assets/forca.png" width="25" height="25">2</td>
+            <td><img src="assets/flexibilidade.png" width="25" height="25">2</td>
+            <td><button onclick="removeElement(this)";
+            </tr>`
+        );
+    }
+
+    function removeElement(element) {
+        console.log($(element).parent().parent().remove())
+
+    }
+</script>
+
+</html>
