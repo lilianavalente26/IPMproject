@@ -92,7 +92,7 @@
         <h1 class="screen-title">Centro da Aldeia.</h1>
         <div class="container-fluid" id="select-rotina">
             <select class="form-select form-select-lg w-50 p-3" id="selectionarRotina">
-                <option value="" selected disabled hidden onclick="updatePrize(0)">Selecione uma Rotina</option>
+                <option selected disabled onclick="updatePrize(0)">Selecione uma Rotina</option>
                 <option value="1" onclick="updatePrize(1)">Rotina Básica</option>
                 <option value="2" onclick="updatePrize(2)">A Minha Rotina</option>
             </select>
@@ -131,8 +131,9 @@
             <div class="col-lg-5 col-md-5" id="start-column">
                 <div class="row">
                     <div class="col-12">
-                        <a href="/" onclick="doRoutine()"><img src="assets\start-button.png" width="100" height="100"></a>
-                        <label>Iniciar rotina</label>
+                        <a href="/" onclick="openBlock(5)"><img src="assets\start-button.png" width="100"
+                                height="100"></a>
+                        <label>Escolher rotina</label>
                     </div>
                 </div>
                 <div class="row" id="secondary-action">
@@ -311,6 +312,108 @@
     <!-- MAIN BLOCK -- INICIAR ROTINA -->
     <!-- MAIN BLOCK -- INICIAR ROTINA -->
 
+
+    <div class="mainBlock" id="iniciar-rotina">
+        <h1 class="screen-title">ROTINA</h1>
+        <div class="container-fluid">
+            <h2 class="screen-title"> Selecionar Dificuldade</h2>
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="screen-title col-4">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" onchange="updateDifficulty(1)" type="checkbox" id="dif1">
+                        <label class="form-check-label" for="dif1">+5 Segundos por exercício <span class="difficulty-prize" id="gold-routine-bonus"> +100 <img src="assets\ouro.png" class="resource"></span></label>
+                    </div>                    
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" onchange="updateDifficulty(2)" type="checkbox" id="dif2">
+                        <label class="form-check-label" for="dif2">+5 Segundos por exercício <span class="difficulty-prize" id="cardio-routine-bonus"> +1 <img src="assets\cardio.png" class="resource"></span></label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" onchange="updateDifficulty(3)" type="checkbox" id="dif3">
+                        <label class="form-check-label" for="dif2">-5 Segundos de descanso <span class="difficulty-prize" id="str-routine-bonus"> +1 <img src="assets\forca.png" class="resource"></span></label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" onchange="updateDifficulty(4)" type="checkbox" id="dif4">
+                        <label class="form-check-label" for="dif2">-5 Segundos de descanso <span class="difficulty-prize" id="flex-routine-bonus"> +1 <img src="assets\flexibilidade.png" class="resource"></span></label>
+                    </div>
+
+                </div>
+                <div class="col-4"></div>
+            </div>
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-lg-5 col-md-5" id="bonus-column">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Prémio total:</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="resource-display col-6">
+                                    <img src="assets\ouro.png" class="resource">
+                                    <label id="gold-total-prize">1850</label>
+                                </div>
+                                <div class="resource-display col-6">
+                                    <img src="assets\cardio.png" class="resource">
+                                    <label id="heart-total-prize">3</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="resource-display col-6">
+                                    <img src="assets\forca.png" class="resource">
+                                    <label id="str-total-prize">3</label>
+                                </div>
+                                <div class="resource-display col-6">
+                                    <img src="assets\flexibilidade.png" class="resource">
+                                    <label id="flex-total-prize">2</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5" id="task-column">
+                    <div class="tabela-exercicios">
+                        <table class="table">
+                            <thead class="fixed-header">
+                                <th>Tarefas:</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jumping Jacks I</td>
+                                </tr>
+                                <tr>
+                                    <td>Flexões I</td>
+                                </tr>
+                                <tr>
+                                    <td>Jumping Jacks I</td>
+                                </tr>
+                                <tr>
+                                    <td>Abdominais I</td>
+                                </tr>
+                                <tr>
+                                    <td>Mountain Climbers II</td>
+                                </tr>
+                                <tr>
+                                    <td>Flexões I</td>
+                                </tr>
+                                <tr>
+                                    <td>Flamingo I</td>
+                                </tr>
+                                <tr>
+                                    <td>Tocar os Calcanhares I</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="centered-button container-fluid">
+                <a href="/" onclick="doRoutine()"><img src="assets/start-button.png" width="100" height="100"></a>
+            </div>
+        </div>
+    </div>
+
+
     <!-- MAIN BLOCK -- PREPARAR ATAQUE -->
     <!-- MAIN BLOCK -- PREPARAR ATAQUE -->
     <!-- MAIN BLOCK -- PREPARAR ATAQUE -->
@@ -343,7 +446,8 @@
                                         data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         Lanceiros
                                         <div class="select-tropas-range">
-                                            <input type="range" onchange="updateLoot(1)" class="form-range" min="0" max="5" id="lanceiros-selecionados">
+                                            <input type="range" onchange="updateLoot(1)" class="form-range" min="0"
+                                                max="5" id="lanceiros-selecionados">
                                         </div>
                                     </button>
                                 </h2>
@@ -362,7 +466,8 @@
                                         data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         Arqueiros
                                         <div class="select-tropas-range">
-                                            <input type="range" onchange="updateLoot(2)" class="form-range" min="0" max="5" id="arqueiros-selecionados">
+                                            <input type="range" onchange="updateLoot(2)" class="form-range" min="0"
+                                                max="5" id="arqueiros-selecionados">
                                         </div>
                                     </button>
                                 </h2>
@@ -486,7 +591,7 @@
     });
 
     function updateLoot(tropa) {
-        
+
         switch (tropa) {
             case 1:
                 var val = parseInt($("#lanceiros-selecionados").val());
@@ -528,11 +633,54 @@
         }
     }
 
-    function doRoutine() {
+    function updateDifficulty(evento) {
         var gold = parseInt($("#gold-prize").html());
         var cardio = parseInt($("#heart-prize").html());
         var str = parseInt($("#str-prize").html());
         var flex = parseInt($("#flex-prize").html());
+        switch (evento) {
+            case 1:
+                if($("#dif1").is(":checked")) {
+                    $("#gold-total-prize").html(gold+100);
+                } else {
+                    $("#gold-total-prize").html(gold);
+                }
+                break;
+            case 2:
+            if($("#dif2").is(":checked")) {
+                    $("#heart-total-prize").html(cardio+1);
+                } else {
+                    $("#heart-total-prize").html(cardio);
+                }
+                break;
+            case 3:
+            if($("#dif3").is(":checked")) {
+                    $("#str-total-prize").html(str+1);
+                } else {
+                    $("#str-total-prize").html(str);
+                }
+                break;
+            case 4:
+            if($("#dif4").is(":checked")) {
+                    $("#flex-total-prize").html(flex+1);
+                } else {
+                    $("#flex-total-prize").html(flex);
+                }
+                break;
+            default:
+                $("#gold-total-prize").html(gold);
+                $("#heart-total-prize").html(heart);
+                $("#str-total-prize").html(str);
+                $("#flex-total-prize").html(flex);
+                break;
+        }
+    }
+
+    function doRoutine() {
+        var gold = parseInt($("#gold-total-prize").html());
+        var cardio = parseInt($("#heart-total-prize").html());
+        var str = parseInt($("#str-total-prize").html());
+        var flex = parseInt($("#flex-total-prize").html());
         addResource(gold, cardio, str, flex);
         openBlock(0);
     }
@@ -573,6 +721,9 @@
             case 4:
                 $("#prep-ataque").show();
                 break;
+            case 5:
+                $("#iniciar-rotina").show();
+                break;
             default:
                 $("#aldeia").show();
                 break;
@@ -585,7 +736,7 @@
                     lance++;
                     $(".lanceNr").html(lance);
                     $("#lanceiros-selecionados").attr('max', lance);
-        
+
                 }
                 break;
             case 1:
