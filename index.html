@@ -15,6 +15,10 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- HEADER -- RECURSOS -->
+    <!-- HEADER -- RECURSOS -->
+    <!-- HEADER -- RECURSOS -->
     <div class="resources-div" id="resources">
         <div class="container-fluid">
             <div class="row">
@@ -41,130 +45,416 @@
             </div>
         </div>
     </div>
+
+
+    <!-- MAIN BLOCK -- ALDEIA -->
+    <!-- MAIN BLOCK -- ALDEIA -->
+    <!-- MAIN BLOCK -- ALDEIA -->
+
+
     <div class="mainBlock" id="aldeia">
         <h1 class="screen-title">Aldeia.</h1>
         <div class="container-fluid">
             <div class=row>
                 <div class="feature-box col-md-3 offset-md-2" id="quinta-icon">
-                    <a href="\" onclick="openBlock(0)"><img class="icon" src="assets\granja.png"></a>
+                    <a href="/" onclick="openBlock(0)"><img class="icon" src="assets\granja.png"></a>
                 </div>
                 <div class="feature-box col-md-3 offset-md-2" id="territorio-icon">
-                    <a href="\" onclick="openBlock(3)"><img class="icon" src="assets\compass.png"></a>
+                    <a href="/" onclick="openBlock(3)"><img class="icon" src="assets\compass.png"></a>
                 </div>
             </div>
             <div class="row">
                 <div class="feature-box col-md-3 offset-md-2" id="quartel-icon">
-                    <a href="\" onclick="openBlock(2)"><img class="icon" src="assets\castelo.png"></a>
+                    <a href="/" onclick="openBlock(2)"><img class="icon" src="assets\castelo.png"></a>
                 </div>
                 <div class="feature-box col-md-3 offset-md-2" id="mercado-icon">
-                    <a href="\" onclick="openBlock(0)"><img class="icon" src="assets\tienda.png"></a>
+                    <a href="/" onclick="openBlock(0)"><img class="icon" src="assets\tienda.png"></a>
                 </div>
             </div>
             <div class="row">
                 <div class="feature-box col-md-3 offset-md-2" id="populacao-icon">
-                    <a href="\" onclick="openBlock(0)"><img class="icon" src="assets\villager.png"></a>
+                    <a href="/" onclick="openBlock(0)"><img class="icon" src="assets\villager.png"></a>
                 </div>
                 <div class="feature-box col-md-3 offset-md-2" id="centro-icon">
-                    <a href="\" onclick="openBlock(1)"><img class="icon" src="assets\fuente.png"></a>
+                    <a href="/" onclick="openBlock(1)"><img class="icon" src="assets\fuente.png"></a>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <!-- MAIN BLOCK -- CENTRO -->
+    <!-- MAIN BLOCK -- CENTRO -->
+    <!-- MAIN BLOCK -- CENTRO -->
+
+
     <div class="mainBlock" id="centro">
         <h1 class="screen-title">Centro da Aldeia.</h1>
-        <!-- PAREI AQUI -->
-        <table>
-            <tr>
-                <th><a href=""><img src="assets\sword.png" width="100" height="100"></a></th>
-                <th>Iniciar rotina</th>
-                <th><a href=""><img src="assets\write.png" width="100" height="100"></a></th>
-                <th>Criar rotina</th>
-            </tr>
-        </table>
+        <div class="container-fluid" id="select-rotina">
+            <select class="form-select form-select-lg w-50 p-3" id="selectionarRotina">
+                <option value="" selected disabled hidden onclick="updatePrize(0)">Selecione uma Rotina</option>
+                <option value="1" onclick="updatePrize(1)">Rotina Básica</option>
+                <option value="2" onclick="updatePrize(2)">A Minha Rotina</option>
+            </select>
+        </div>
+        <div class="row">
+            <div class="col-lg-1 col-md-1"></div>
+            <div class="col-lg-5 col-md-5" id="bonus-column">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Prémio total:</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="resource-display col-6">
+                                <img src="assets\ouro.png" class="resource">
+                                <label id="gold-prize">0</label>
+                            </div>
+                            <div class="resource-display col-6">
+                                <img src="assets\cardio.png" class="resource">
+                                <label id="heart-prize">0</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="resource-display col-6">
+                                <img src="assets\forca.png" class="resource">
+                                <label id="str-prize">0</label>
+                            </div>
+                            <div class="resource-display col-6">
+                                <img src="assets\flexibilidade.png" class="resource">
+                                <label id="flex-prize">0</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5" id="start-column">
+                <div class="row">
+                    <div class="col-12">
+                        <a href="/" onclick="doRoutine()"><img src="assets\start-button.png" width="100" height="100"></a>
+                        <label>Iniciar rotina</label>
+                    </div>
+                </div>
+                <div class="row" id="secondary-action">
+                    <div class="col-12">
+                        <a href=""><img src="assets\write.png" width="50" height="50"></a>
+                        <label>Criar nova rotina</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1"></div>
+        </div>
     </div>
+
+
+    <!-- MAIN BLOCK -- QUARTEL -->
+    <!-- MAIN BLOCK -- QUARTEL -->
+    <!-- MAIN BLOCK -- QUARTEL -->
+
+
     <div class="mainBlock" id="quartel">
         <h1 class="screen-title">Quartel.</h1>
         <div class="container-fluid">
-            <table>
-                <tr>
-                    <th>Próxima missão (!)</th>
-                    <th>Prémio</th>
-                </tr>
-                <tr>
-                    <td>Fazer burpees I - 0/5</td>
-                    <td>triceps sentado I</td>
-                </tr>
-            </table>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-6">
+                    <table class="quest-table table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Missão</th>
+                                <th scope="col">Recompensa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Fazer Mountain Climbers I - 1/4 <br>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 25%;"
+                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">1</div>
+                                    </div>
+                                </td>
+                                <td>Triceps Sentado I</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+        <div class="container-fluid">
             <br>
-            <br>
-            <h2>Recrutar</h2>
-            <table id="troopTable">
-                <tr>
-                    <td><button onclick="addResource(-100, -3, -2, 0); addTroop(0); addElement()">Lanceiro <span
-                                class="lanceNr"></span></button></td>
-                    <td><img src="assets/ouro.png" width="25" height="25">100</td>
-                    <td><img src="assets/cardio.png" width="25" height="25">3</td>
-                    <td><img src="assets/forca.png" width="25" height="25">2</td>
-                </tr>
-                <tr>
-                    <td><button onclick="addResource(-150, -2, -2, -2); addTroop(1); removeElement(this)">Arqueiro
-                            <span class="archeNr"></span></button></td>
-                    <td><img src="assets/ouro.png" width="25" height="25">150</td>
-                    <td><img src="assets/cardio.png" width="25" height="25">2</td>
-                    <td><img src="assets/forca.png" width="25" height="25">2</td>
-                    <td><img src="assets/flexibilidade.png" width="25" height="25">2</td>
-                </tr>
-            </table>
-            <br>
-            <table>
-                <tr>
-                    <td><a href=""><img src="assets/compass.png" width="100" height="100"></a></td>
-                    <td>
-                        <h2>Preparar Ataque</h2>
-                    </td>
-                </tr>
-            </table>
+            <h2 class="centered-button">Recrutar</h2>
+            <div class="row">
+                <div class="col-lg-1 col-md-1"></div>
+                <div class="col-lg-5 col-md-5" id="recruitment-column-1">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Lanceiro:</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="resource-display col-12">
+                                    <h2 class="lanceNr">0</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="resource-display col-6">
+                                    <img src="assets\ouro.png" class="resource">
+                                    <label>100</label>
+                                </div>
+                                <div class="resource-display col-6">
+                                    <img src="assets\cardio.png" class="resource">
+                                    <label>2</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="resource-display col-6">
+                                    <img src="assets\forca.png" class="resource">
+                                    <label>1</label>
+                                </div>
+                                <div class="resource-display col-6">
+                                    <img src="assets\flexibilidade.png" class="resource">
+                                    <label>0</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button type="button" class="btn btn-dark" onclick="addTroop(0)"> Recrutar </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5" id="recruitment-column-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Arqueiro:</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="resource-display col-12">
+                                    <h2 class="archeNr">0</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="resource-display col-6">
+                                    <img src="assets\ouro.png" class="resource">
+                                    <label>150</label>
+                                </div>
+                                <div class="resource-display col-6">
+                                    <img src="assets\cardio.png" class="resource">
+                                    <label>2</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="resource-display col-6">
+                                    <img src="assets\forca.png" class="resource">
+                                    <label>2</label>
+                                </div>
+                                <div class="resource-display col-6">
+                                    <img src="assets\flexibilidade.png" class="resource">
+                                    <label>2</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button type="button" class="btn btn-dark" onclick="addTroop(1)"> Recrutar </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-1"></div>
+            </div>
+            <div class="centered-button container-fluid">
+                <a href="/" onclick="openBlock(3)"><img src="assets/compass.png" width="100" height="100"></a>
+                <br><label>Preparar Ataque</label>
+            </div>
         </div>
     </div>
+
+    <!-- MAIN BLOCK -- TERRITORIO -->
+    <!-- MAIN BLOCK -- TERRITORIO -->
+    <!-- MAIN BLOCK -- TERRITORIO -->
+
+
     <div class="mainBlock" id="territorio">
-        <h1>
-            Territórios.
-        </h1>
-        <table>
-            <tr>
-                <th><img src="assets\aldeias.png" width="100" height="100"></a></th>
-                <th>Primopolis</th>
-                <th><img src="assets\aldeias2.png" width="100" height="100"></th>
-                <th>Aldeia-mãe</th>
-            </tr>
-            <tr>
-                <th><img src="assets\aldeias3.png" width="100" height="100"></a></th>
-                <th>Tio Ville</th>
-                <th><img src="assets\aldeias4.png" width="100" height="100"></th>
-                <th>Irmãodade</th>
-            </tr>
-        </table>
+        <h1 class="screen-title">Território.</h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-6">
+                    <img src="assets\aldeias.png" width="100" height="100"><br>
+                    <label>Primopolis</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col">
+                    <a href="/" onclick="openBlock(4)"><img src="assets\aldeias2.png" width="100" height="100"></a><br>
+                    <label>Aldeia-mãe</label>
+                </div>
+                <div class="col-6"></div>
+            </div>
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col">
+                    <img src="assets\aldeias3.png" width="100" height="100"><br>
+                    <label>Tio Ville</label>
+                </div>
+                <div class="col">
+                    <img src="assets\aldeias4.png" width="100" height="100"><br>
+                    <label>Irmãodade</label>
+                </div>
+            </div>
+        </div>
     </div>
-    <br>
-    <br>
+
+
+    <!-- MAIN BLOCK -- INICIAR ROTINA -->
+    <!-- MAIN BLOCK -- INICIAR ROTINA -->
+    <!-- MAIN BLOCK -- INICIAR ROTINA -->
+
+    <!-- MAIN BLOCK -- PREPARAR ATAQUE -->
+    <!-- MAIN BLOCK -- PREPARAR ATAQUE -->
+    <!-- MAIN BLOCK -- PREPARAR ATAQUE -->
+
+
+    <div class="mainBlock" id="prep-ataque">
+        <h1 class="screen-title">ATAQUE</h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-2">
+                    <h2>Alvo:</h2>
+                </div>
+                <div class="col-2">
+                    <h3 id="target">Aldeia-mãe</h3>
+                </div>
+                <div class="col">
+                    <a href="/" onclick="openBlock(3)"><img src="assets/compass.png" width="75" height="75"></a>
+                    <br><label>Alterar</label>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-6">
+                        <div class="accordion" id="select-tropas">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="select-lanceiro">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Lanceiros
+                                        <div class="select-tropas-range">
+                                            <input type="range" onchange="updateLoot(1)" class="form-range" min="0" max="5" id="lanceiros-selecionados">
+                                        </div>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Tropas dedicadas ao ataque e à defesa. Estatísticas= Ataque: 2, Defesa: 2,
+                                        Fraqueza:
+                                        ARQUEIRO. Saque transportado: 20 <img src="assets\ouro.png" class="resource">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="select-arqueiro">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Arqueiros
+                                        <div class="select-tropas-range">
+                                            <input type="range" onchange="updateLoot(2)" class="form-range" min="0" max="5" id="arqueiros-selecionados">
+                                        </div>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        Tropas dedicadas à defesa. Estatísticas= Ataque: 1, Defesa: 3 Fraqueza:
+                                        CAVALARIA.
+                                        Saque
+                                        transportado: 1 <img src="assets\flexibilidade.png" class="resource">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-1 col-md-1"></div>
+                <div class="col-lg-5 col-md-5" id="bonus-column">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Saque máximo previsto:</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="resource-display col-6">
+                                    <img src="assets\ouro.png" class="resource">
+                                    <label id="gold-loot">0</label>
+                                </div>
+                                <div class="resource-display col-6">
+                                    <img src="assets\cardio.png" class="resource">
+                                    <label id="heart-loot">0</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="resource-display col-6">
+                                    <img src="assets\forca.png" class="resource">
+                                    <label id="str-loot">0</label>
+                                </div>
+                                <div class="resource-display col-6">
+                                    <img src="assets\flexibilidade.png" class="resource">
+                                    <label id="flex-loot">0</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-5" id="start-column">
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="/" onclick="openBlock(0)"><img src="assets\sword.png" width="100" height="100"></a>
+                            <label>Atacar!</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-1"></div>
+            </div>
+        </div>
+
+        <br>
+        <br>
     </div>
+
+
+    <!-- FOOTER -- NAVEGAÇÃO -->
+    <!-- FOOTER -- NAVEGAÇÃO -->
+    <!-- FOOTER -- NAVEGAÇÃO -->
+
+
     <div class="footer" id="footer-navigation">
         <div class="container-fluid">
             <div class="row">
                 <div class="footer-box col-md-3 offset-md-1" id="return-to-aldeia">
-                <a href="/" onclick="openBlock(0)"><img class="footer-nav-icon" src="assets\fuente.png"></a>
+                    <a href="/" onclick="openBlock(0)"><img class="footer-nav-icon" src="assets\fuente.png"></a>
                 </div>
                 <div class="footer-box col-md-3 offset-md-1" id="quick-start-icon">
-                    <button type="button" class="btn btn-success btn-lg"><img class="footer-nav-icon" src="assets\start-button.png"></button>
+                    <button type="button" class="btn btn-success btn-lg"><img class="footer-nav-icon"
+                            src="assets\start-button.png"></button>
                 </div>
                 <div class="footer-box col-md-3 offset-md-1" id="return-to-aldeia">
-                   <a href="/" onclick="openBlock(0)"><img class="footer-nav-icon" src="assets\write.png"></a>
+                    <a href="/" onclick="openBlock(0)"><img class="footer-nav-icon" src="assets\write.png"></a>
                 </div>
                 <br>
                 <br>
-                <a href="https://www.flaticon.com/free-icons/start-button" title="start button icons">Start button icons created by Freepik - Flaticon</a>
+                <a href="https://www.flaticon.com/free-icons/start-button" title="start button icons">Start button icons
+                    created by Freepik - Flaticon</a>
             </div>
         </div>
+
 </body>
 <script>
 
@@ -190,7 +480,62 @@
         $(".lanceNr").html(lance)
         $(".archeNr").html(arche)
 
+        $("#lanceiros-selecionados").attr('max', lance);
+        $("#arqueiros-selecionados").attr('max', arche);
+
     });
+
+    function updateLoot(tropa) {
+        
+        switch (tropa) {
+            case 1:
+                var val = parseInt($("#lanceiros-selecionados").val());
+                $("#gold-loot").html(val * 20);
+                break;
+            case 2:
+                var val = parseInt($("#arqueiros-selecionados").val());
+                $("#flex-loot").html(val * 1);
+                break;
+            default:
+                $("#gold-loot").html(0);
+                $("#heart-loot").html(0);
+                $("#str-loot").html(0);
+                $("#flex-loot").html(0);
+                break;
+        }
+    }
+
+    function updatePrize(evento) {
+        switch (evento) {
+            case 1:
+                $("#gold-prize").html(1200);
+                $("#heart-prize").html(2);
+                $("#str-prize").html(2);
+                $("#flex-prize").html(2);
+                break;
+            case 2:
+                $("#gold-prize").html(1850);
+                $("#heart-prize").html(3);
+                $("#str-prize").html(3);
+                $("#flex-prize").html(2);
+                break;
+            default:
+                $("#gold-prize").html(0);
+                $("#heart-prize").html(0);
+                $("#str-prize").html(0);
+                $("#flex-prize").html(0);
+                break;
+        }
+    }
+
+    function doRoutine() {
+        var gold = parseInt($("#gold-prize").html());
+        var cardio = parseInt($("#heart-prize").html());
+        var str = parseInt($("#str-prize").html());
+        var flex = parseInt($("#flex-prize").html());
+        addResource(gold, cardio, str, flex);
+        openBlock(0);
+    }
 
     function addResource(goldVal, heartVal, strVal, flexVal) {
 
@@ -206,6 +551,7 @@
         $("#heart").html(heart);
         $("#str").html(str);
         $("#flex").html(flex);
+        return true;
     }
 
     function openBlock(blockValue) {
@@ -224,6 +570,9 @@
             case 3:
                 $("#territorio").show();
                 break;
+            case 4:
+                $("#prep-ataque").show();
+                break;
             default:
                 $("#aldeia").show();
                 break;
@@ -232,12 +581,19 @@
     function addTroop(troopNr) {
         switch (troopNr) {
             case 0:
-                lance++
-                $(".lanceNr").html(lance)
+                if (addResource(-100, -1, -2, 0)) {
+                    lance++;
+                    $(".lanceNr").html(lance);
+                    $("#lanceiros-selecionados").attr('max', lance);
+        
+                }
                 break;
             case 1:
-                arche++
-                $(".archeNr").html(arche)
+                if (addResource(-150, -2, -2, -2)) {
+                    arche++;
+                    $(".archeNr").html(arche);
+                    $("#arqueiros-selecionados").attr('max', arche);
+                }
                 break;
         }
     }

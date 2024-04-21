@@ -45,4 +45,27 @@ dá acesso a:
 Recrutar 1 Lanceiro:
 custa: 100 Ouro, 1 Bigorna, 2 Corações.
 
+Recursos iniciais:
+5000 Ouro 6 Bigornas, 23 Corações, 5 Estrelas
+
+Recursos necessários para recrutar 4 Lanceiros:
+400 Ouro, 4 Bigornas, 8 Corações
+
+Exercícios necessários:
+4 de Força, 8 de Cardio, alternativamente, 6 de Cardio + 2 de Bonus.
+
+Rotina Simples
+Jumping Jacks I -> Flexões I -> Abdominais I -> Mountain Climbers I -> Flamingo I -> Tocar os Calcanhares I
+Ouro = 200*6 = 1200
+Bigornas: 2
+Coraçoes: 2 + 2
+Estrelas: 2
+
+A Minha Rotina:
+Jumping Jacks I -> Flexões I -> Jumping Jacks I -> Abdominais I -> Mountain Climbers II -> Flexões I -> Flamingo I -> Tocar os Calcanhares I
+Ouro = 200*7 + 450 = 1850
+Bigornas: 3
+Coraçoes: 3 + 2
+Estrelas: 2
+
 

@@ -14,7 +14,8 @@ body {
     width: 60%;
     height: auto;
 }
-.footer-nav-icon{
+
+.footer-nav-icon {
     width: 60%;
     height: auto;
 }
@@ -37,6 +38,7 @@ body {
     text-align: center;
     padding: 4.5%;
 }
+
 #quick-start-icon {
     width: 100;
     height: auto;
@@ -48,4 +50,36 @@ body {
 
 .screen-title {
     text-align: center;
+}
+
+#select-rotina {
+    margin-left: 25%;
+}
+
+#secondary-action {
+    margin-top: 7%;
+}
+
+#bonus-column {
+    padding: 7%;
+}
+
+#recruitment-column-1 {
+    padding: 7%;
+}
+
+#recruitment-column-2 {
+    padding: 7%;
+}
+
+#start-column {
+    padding: 7%;
+}
+
+.centered-button {
+    text-align: center;
+}
+
+.select-tropas-range {
+    margin: auto 10%;
 }
