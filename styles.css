@@ -99,3 +99,15 @@ body {
     z-index: 1;
     background:#fff;
 }
+
+.lack-funds{
+    animation-name: lackFunds;
+    animation-duration: 1s;
+}
+@keyframes lackFunds {
+    0%   {color: black;}
+    25%  {color: red; font-size: 1.2rem;}
+    50%  {color: black; font-size: 1rem;}
+    75%  {color: red;font-size: 1.2rem;}
+    100% {color: black; font-size: 1rem;}
+  }

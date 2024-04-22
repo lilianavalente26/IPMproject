@@ -154,7 +154,73 @@
 
 
     <div class="mainBlock" id="quartel">
-        <h1 class="screen-title">Quartel.</h1>
+        <!-- Modal -->
+        <div class="modal fade" id="desenvolver-quartel-popup" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Desenvolver o Quartel?</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-6" style="border-right: solid;">
+                                <h3 class="screen-title">Custo:</h3>
+                                <div class="row">
+                                    <div class="resource-display col-6">
+                                        <img src="assets\ouro.png" class="resource">
+                                        <label id="gold-cost">5000</label>
+                                    </div>
+                                    <div class="resource-display col-6">
+                                        <img src="assets\cardio.png" class="resource">
+                                        <label id="heart-cost">20</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="resource-display col-6">
+                                        <img src="assets\forca.png" class="resource">
+                                        <label id="str-cost">5</label>
+                                    </div>
+                                    <div class="resource-display col-6">
+                                        <img src="assets\flexibilidade.png" class="resource">
+                                        <label id="flex-cost">5</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <h3 class="screen-title">Novas Tarefas:</h3>
+                                <ul class="list-group">
+                                    <li class="list-group-item">Jumping Jacks II</li>
+                                    <li class="list-group-item">Mountain Climbers II</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
+                        <button type="button" class="btn btn-success" id="botao-desenvolver"
+                            onclick="addResource(-5000, -20, -5, -5)">Desenvolver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-1">
+                <span style="cursor:pointer" onclick="checkPopup()" data-bs-toggle="modal"
+                    data-bs-target="#desenvolver-quartel-popup"><img src="assets/castelo-upgrade.png" width="60"
+                        height="60"></span>
+            </div>
+            <div class="col-2">
+                <h1 class="screen-title"> Quartel.</h1>
+            </div>
+            <div class="col-1">
+                <span><img src="assets/cardio.png" width="30" height="30"></span>
+            </div>
+            <div class="col-4"></div>
+        </div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col"></div>
@@ -322,19 +388,27 @@
                 <div class="screen-title col-4">
                     <div class="form-check form-switch">
                         <input class="form-check-input" onchange="updateDifficulty(1)" type="checkbox" id="dif1">
-                        <label class="form-check-label" for="dif1">+5 Segundos por exercício <span class="difficulty-prize" id="gold-routine-bonus"> +100 <img src="assets\ouro.png" class="resource"></span></label>
-                    </div>                    
+                        <label class="form-check-label" for="dif1">+5 Segundos por exercício <span
+                                class="difficulty-prize" id="gold-routine-bonus"> +100 <img src="assets\ouro.png"
+                                    class="resource"></span></label>
+                    </div>
                     <div class="form-check form-switch">
                         <input class="form-check-input" onchange="updateDifficulty(2)" type="checkbox" id="dif2">
-                        <label class="form-check-label" for="dif2">+5 Segundos por exercício <span class="difficulty-prize" id="cardio-routine-bonus"> +1 <img src="assets\cardio.png" class="resource"></span></label>
+                        <label class="form-check-label" for="dif2">+5 Segundos por exercício <span
+                                class="difficulty-prize" id="cardio-routine-bonus"> +1 <img src="assets\cardio.png"
+                                    class="resource"></span></label>
                     </div>
                     <div class="form-check form-switch">
                         <input class="form-check-input" onchange="updateDifficulty(3)" type="checkbox" id="dif3">
-                        <label class="form-check-label" for="dif2">-5 Segundos de descanso <span class="difficulty-prize" id="str-routine-bonus"> +1 <img src="assets\forca.png" class="resource"></span></label>
+                        <label class="form-check-label" for="dif2">-5 Segundos de descanso <span
+                                class="difficulty-prize" id="str-routine-bonus"> +1 <img src="assets\forca.png"
+                                    class="resource"></span></label>
                     </div>
                     <div class="form-check form-switch">
                         <input class="form-check-input" onchange="updateDifficulty(4)" type="checkbox" id="dif4">
-                        <label class="form-check-label" for="dif2">-5 Segundos de descanso <span class="difficulty-prize" id="flex-routine-bonus"> +1 <img src="assets\flexibilidade.png" class="resource"></span></label>
+                        <label class="form-check-label" for="dif2">-5 Segundos de descanso <span
+                                class="difficulty-prize" id="flex-routine-bonus"> +1 <img src="assets\flexibilidade.png"
+                                    class="resource"></span></label>
                     </div>
 
                 </div>
@@ -521,10 +595,12 @@
                 <div class="col-lg-5 col-md-5" id="start-column">
                     <div class="row">
                         <div class="col-12">
-                            <a href="/" onclick="openBlock(0)"><img src="assets\sword.png" width="100" height="100"></a>
+                            <a href="/" onclick="startAttack()"><img src="assets\sword.png" width="100"
+                                    height="100"></a>
                             <label>Atacar!</label>
                         </div>
                     </div>
+                    <div id="liveAlertPlaceholder"></div>
                 </div>
                 <div class="col-lg-1 col-md-1"></div>
             </div>
@@ -544,10 +620,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="footer-box col-md-3 offset-md-1" id="return-to-aldeia">
-                    <a href="/" onclick="openBlock(0)"><img class="footer-nav-icon" src="assets\fuente.png"></a>
+                    <a href="/" onclick="openBlock(0)"><img class="footer-nav-icon" src="assets\home-village.png"></a>
                 </div>
-                <div class="footer-box col-md-3 offset-md-1" id="quick-start-icon">
-                    <button type="button" class="btn btn-success btn-lg"><img class="footer-nav-icon"
+                <div class="footer-box col-md-3 offset-md-1">
+                    <button type="button" id="quick-start-icon" onclick="openBlock(1)" class="btn btn-success btn-lg"><img class="footer-nav-icon"
                             src="assets\start-button.png"></button>
                 </div>
                 <div class="footer-box col-md-3 offset-md-1" id="return-to-aldeia">
@@ -557,18 +633,19 @@
                 <br>
                 <a href="https://www.flaticon.com/free-icons/start-button" title="start button icons">Start button icons
                     created by Freepik - Flaticon</a>
+                <a href="https://www.flaticon.com/free-icons/village" title="village icons">Village icons created by Freepik - Flaticon</a>
             </div>
         </div>
 
 </body>
 <script>
 
-    var gold = 1000;
-    var heart = 5;
+    var gold = 5000;
+    var heart = 20;
     var str = 5;
-    var flex = 4;
-    var lance = 2;
-    var arche = 2;
+    var flex = 5;
+    var lance = 0;
+    var arche = 0;
 
     $(document).ready(function () {
         //CODE GOES HERE
@@ -610,6 +687,14 @@
         }
     }
 
+    function checkPopup(id) {
+        if (gold < 5000 || heart < 20 || str < 5 || flex < 5) {
+            $(id).addClass("disabled");
+        } else {
+            $(id).removeClass("disabled");
+        }
+    }
+
     function updatePrize(evento) {
         switch (evento) {
             case 1:
@@ -628,7 +713,7 @@
                 $("#gold-prize").html(0);
                 $("#heart-prize").html(0);
                 $("#str-prize").html(0);
-                $("#flex-prize").html(0);
+                $("flex-prize").html(0);
                 break;
         }
     }
@@ -640,29 +725,29 @@
         var flex = parseInt($("#flex-prize").html());
         switch (evento) {
             case 1:
-                if($("#dif1").is(":checked")) {
-                    $("#gold-total-prize").html(gold+100);
+                if ($("#dif1").is(":checked")) {
+                    $("#gold-total-prize").html(gold + 100);
                 } else {
                     $("#gold-total-prize").html(gold);
                 }
                 break;
             case 2:
-            if($("#dif2").is(":checked")) {
-                    $("#heart-total-prize").html(cardio+1);
+                if ($("#dif2").is(":checked")) {
+                    $("#heart-total-prize").html(cardio + 1);
                 } else {
                     $("#heart-total-prize").html(cardio);
                 }
                 break;
             case 3:
-            if($("#dif3").is(":checked")) {
-                    $("#str-total-prize").html(str+1);
+                if ($("#dif3").is(":checked")) {
+                    $("#str-total-prize").html(str + 1);
                 } else {
                     $("#str-total-prize").html(str);
                 }
                 break;
             case 4:
-            if($("#dif4").is(":checked")) {
-                    $("#flex-total-prize").html(flex+1);
+                if ($("#dif4").is(":checked")) {
+                    $("#flex-total-prize").html(flex + 1);
                 } else {
                     $("#flex-total-prize").html(flex);
                 }
@@ -685,9 +770,29 @@
         openBlock(0);
     }
 
+    function alertFunds(lackingFunds) {
+        lackingFunds.forEach(id => {
+            $(id).addClass('lack-funds');
+            setTimeout(function () { $(id).removeClass('lack-funds'); }, 1000);
+        });
+
+    }
+
     function addResource(goldVal, heartVal, strVal, flexVal) {
 
-        if (gold + goldVal < 0 || heart + heartVal < 0 || str + strVal < 0 || flex + flexVal < 0) return false;
+        // $("label").removeClass('lack-funds');
+        if (gold + goldVal < 0 || heart + heartVal < 0 || str + strVal < 0 || flex + flexVal < 0) {
+
+            var variables = []
+
+            if (gold + goldVal < 0) variables.push('#gold')
+            if (heart + heartVal < 0) variables.push('#heart')
+            if (str + strVal < 0) variables.push('#str')
+            if (flex + flexVal < 0) variables.push('#flex')
+
+            alertFunds(variables)
+            return false;
+        }
 
         gold += goldVal;
         heart += heartVal;
@@ -699,11 +804,13 @@
         $("#heart").html(heart);
         $("#str").html(str);
         $("#flex").html(flex);
+        $("#desenvolver-quartel-popup").modal('hide');
         return true;
     }
 
     function openBlock(blockValue) {
 
+        $("#quick-start-icon").show();
         $(".mainBlock").hide();
         switch (blockValue) {
             case 0:
@@ -711,6 +818,7 @@
                 break;
             case 1:
                 $("#centro").show();
+                $("#quick-start-icon").hide();
                 break;
             case 2:
                 $("#quartel").show();
@@ -723,6 +831,7 @@
                 break;
             case 5:
                 $("#iniciar-rotina").show();
+                $("#quick-start-icon").hide();
                 break;
             default:
                 $("#aldeia").show();
@@ -732,7 +841,7 @@
     function addTroop(troopNr) {
         switch (troopNr) {
             case 0:
-                if (addResource(-100, -1, -2, 0)) {
+                if (addResource(-100, -2, -1, 0)) {
                     lance++;
                     $(".lanceNr").html(lance);
                     $("#lanceiros-selecionados").attr('max', lance);
@@ -748,8 +857,30 @@
                 break;
         }
     }
-    function addElement() {
-        $("#troopTable").append(`
+    const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+    const alert = (message, type) => {
+        const wrapper = document.createElement('div')
+        wrapper.innerHTML = [
+            `<div class="alert alert-${type} alert-dismissible fade show" role="alert">`,
+            `   <div>${message}</div>`,
+            '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+            '</div>'
+        ].join('')
+
+        alertPlaceholder.append(wrapper)
+    }
+    function startAttack() {
+        if (parseInt($("#arqueiros-selecionados").val()) < 1 && parseInt($("#lanceiros-selecionados").val()) < 1) {
+            alert('Não pode atacar sem tropas!', 'danger');
+            setTimeout(function () { $(".alert").alert('close'); }, 1000);
+        } else {
+            openBlock(0);
+        }
+    }
+
+        function addElement() {
+            $("#troopTable").append(`
             <tr>
             <td><button onclick="addResource(-150, -2, -2, -2); addTroop(1);">Arqueiro <span class="archeNr"></span></button></td>
             <td><img src="assets/ouro.png" width="25" height="25">150</td>
@@ -758,13 +889,13 @@
             <td><img src="assets/flexibilidade.png" width="25" height="25">2</td>
             <td><button onclick="removeElement(this)";
             </tr>`
-        );
-    }
+            );
+        }
 
-    function removeElement(element) {
-        console.log($(element).parent().parent().remove())
+        function removeElement(element) {
+            console.log($(element).parent().parent().remove())
 
-    }
+        }
 </script>
 
 </html>
