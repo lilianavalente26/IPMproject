@@ -56,27 +56,45 @@
         <h1 class="screen-title">Aldeia.</h1>
         <div class="container-fluid">
             <div class=row>
-                <div class="feature-box col-md-3 offset-md-2" id="quinta-icon">
-                    <img class="icon" src="assets\granja.png" onclick="openBlock(0)" style="cursor:pointer">
+                <div class="feature-box col-md-3 offset-md-2" data-bs-toggle="popover" 
+                data-bs-trigger="hover focus" data-bs-title="Quinta" 
+                data-bs-content="Onde trabalham Agricultores. Quem aqui labuta ganha força. <<POR IMPLEMENTAR>>" 
+                id="quinta-icon">
+                    <img class="main-screen-icon" src="assets\quinta-legendada.png" onclick="openBlock(0)" style="cursor:pointer">
                 </div>
-                <div class="feature-box col-md-3 offset-md-2" id="territorio-icon">
-                    <img class="icon" src="assets\compass.png" onclick="openBlock(3)" style="cursor:pointer">
-                </div>
-            </div>
-            <div class="row">
-                <div class="feature-box col-md-3 offset-md-2" id="quartel-icon">
-                   <img class="icon" src="assets\castelo.png" onclick="openBlock(2)" style="cursor:pointer">
-                </div>
-                <div class="feature-box col-md-3 offset-md-2" id="mercado-icon">
-                    <img class="icon" src="assets\tienda.png" onclick="openBlock(0)" style="cursor:pointer">
+                <div class="feature-box col-md-3 offset-md-2" data-bs-toggle="popover" 
+                data-bs-trigger="hover focus" data-bs-title="Território" 
+                data-bs-content="Aldeias vizinhas são fonte de recursos e preocupação. Que estarão os outros nobres a fazer agora?" 
+                id="territorio-icon" data-bs-placement="left">
+                    <img class="main-screen-icon" src="assets\territorio-legendado.png" onclick="openBlock(3)" style="cursor:pointer">
                 </div>
             </div>
             <div class="row">
-                <div class="feature-box col-md-3 offset-md-2" id="populacao-icon">
-                    <img class="icon" src="assets\villager.png" onclick="openBlock(0)" style="cursor:pointer">
+                <div class="feature-box col-md-3 offset-md-2" data-bs-toggle="popover" 
+                data-bs-trigger="hover focus" data-bs-title="Castelo" 
+                data-bs-content="Onde se treinam as Tropas. Os jovens precisam de um coração forte para defender a aldeia." 
+                id="castelo-icon">
+                   <img class="main-screen-icon" src="assets\castelo-legendado.png" onclick="openBlock(2)" style="cursor:pointer">
                 </div>
-                <div class="feature-box col-md-3 offset-md-2" id="centro-icon">
-                    <img class="icon" src="assets\fuente.png" onclick="openBlock(1)" style="cursor:pointer">
+                <div class="feature-box col-md-3 offset-md-2" data-bs-toggle="popover" 
+                data-bs-trigger="hover focus" data-bs-title="Mercado" 
+                data-bs-content="Onde os Mercadores fazem os seus negócios. Um bom mercador é ágil e flexível. <<POR IMPLEMENTAR>>" 
+                id="mercado-icon" data-bs-placement="left">
+                    <img class="main-screen-icon" src="assets\mercado-legendado.png" onclick="openBlock(0)" style="cursor:pointer">
+                </div>
+            </div>
+            <div class="row">
+                <div class="feature-box col-md-3 offset-md-2" data-bs-toggle="popover" 
+                data-bs-trigger="hover focus" data-bs-title="População" 
+                data-bs-content="Numa aldeia, cada um tem um papel importante a desempenhar. O que é mais importante agora? <<POR IMPLEMENTAR>>"
+                id="populacao-icon">
+                    <img class="main-screen-icon" src="assets\populacao-legendada.png" onclick="openBlock(0)" style="cursor:pointer">
+                </div>
+                <div class="feature-box col-md-3 offset-md-2" data-bs-toggle="popover" 
+                data-bs-trigger="hover focus" data-bs-title="Centro da Aldeia" 
+                data-bs-content="É o dever de um líder ouvir os seus súbditos. Aqui são expostas tarefas a fazer, e podem-se definir rotinas para as realizar. Ao trabalho!"
+                id="centro-icon" data-bs-placement="left">
+                    <img class="main-screen-icon" src="assets\centro-legendado.png" onclick="openBlock(1)" style="cursor:pointer">
                 </div>
             </div>
         </div>
@@ -147,19 +165,19 @@
     </div>
 
 
-    <!-- MAIN BLOCK -- QUARTEL -->
-    <!-- MAIN BLOCK -- QUARTEL -->
-    <!-- MAIN BLOCK -- QUARTEL -->
+    <!-- MAIN BLOCK -- CASTELO -->
+    <!-- MAIN BLOCK -- CASTELO -->
+    <!-- MAIN BLOCK -- CASTELO -->
 
 
-    <div class="mainBlock" id="quartel">
+    <div class="mainBlock" id="castelo">
         <!-- Modal -->
-        <div class="modal fade" id="desenvolver-quartel-popup" tabindex="-1" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="desenvolver-castelo-popup" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Desenvolver o Quartel?</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Desenvolver o Castelo?</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -209,11 +227,11 @@
             <div class="col-4"></div>
             <div class="col-1">
                 <span style="cursor:pointer" onclick="checkPopup()" data-bs-toggle="modal"
-                    data-bs-target="#desenvolver-quartel-popup"><img src="assets/castelo-upgrade.png" width="60"
+                    data-bs-target="#desenvolver-castelo-popup"><img src="assets/castelo-upgrade.png" width="60"
                         height="60"></span>
             </div>
             <div class="col-2">
-                <h1 class="screen-title"> Quartel.</h1>
+                <h1 class="screen-title"> Castelo.</h1>
             </div>
             <div class="col-1">
                 <span><img src="assets/cardio.png" width="30" height="30"></span>
@@ -617,12 +635,13 @@
     <div class="footer" id="footer-navigation">
         <div class="container-fluid">
             <div class="row">
-                <div class="footer-box col-md-3 offset-md-1" id="return-to-aldeia">
-                    <img onclick="openBlock(0)" class="footer-nav-icon" src="assets\home-village.png">
+                <div class="footer-box col-md-3 offset-md-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Voltar para a minha aldeia" id="return-to-aldeia">
+                    <img onclick="openBlock(0)" class="footer-nav-icon" src="assets\aldeia-legendada.png">
                 </div>
                 <div class="footer-box col-md-3 offset-md-1">
-                    <button type="button" id="quick-start-icon" onclick="openBlock(1)" class="btn btn-success btn-lg"><img class="footer-nav-icon"
-                            src="assets\start-button.png"></button>
+                    <button type="button" id="quick-start-icon" onclick="openBlock(5)" class="btn btn-success btn-lg"  
+                    data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Iniciar a rotina de tarefas preferida">
+                    <img class="footer-nav-icon" src="assets\start-button.png"></button>
                 </div>
                 <div class="footer-box col-md-3 offset-md-1" id="return-to-aldeia">
                     <img class="footer-nav-icon" src="assets\write.png" onclick="openBlock(0)" style="cursor:pointer">
@@ -636,264 +655,6 @@
         </div>
 
 </body>
-<script>
-
-    var gold = 5000;
-    var heart = 25;
-    var str = 6;
-    var flex = 5;
-    var lance = 0;
-    var arche = 0;
-
-    $(document).ready(function () {
-        //CODE GOES HERE
-
-        //ENABLE "ALDEIA" AT STARTUP
-        $('#aldeia').show();
-
-        //UPDATE RESCOURCES
-        $("#gold").html(gold);
-        $("#heart").html(heart);
-        $("#str").html(str);
-        $("#flex").html(flex);
-
-        $(".lanceNr").html(lance)
-        $(".archeNr").html(arche)
-
-        $("#lanceiros-selecionados").attr('max', lance);
-        $("#arqueiros-selecionados").attr('max', arche);
-
-    });
-
-    function updateLoot(tropa) {
-
-        switch (tropa) {
-            case 1:
-                var val = parseInt($("#lanceiros-selecionados").val());
-                $("#gold-loot").html(val * 20);
-                break;
-            case 2:
-                var val = parseInt($("#arqueiros-selecionados").val());
-                $("#flex-loot").html(val * 1);
-                break;
-            default:
-                $("#gold-loot").html(0);
-                $("#heart-loot").html(0);
-                $("#str-loot").html(0);
-                $("#flex-loot").html(0);
-                break;
-        }
-    }
-
-    function checkPopup(id) {
-        if (gold < 5000 || heart < 20 || str < 5 || flex < 5) {
-            $(id).addClass("disabled");
-        } else {
-            $(id).removeClass("disabled");
-        }
-    }
-
-    function updatePrize(evento) {
-        switch (evento) {
-            case 1:
-                $("#gold-prize").html(1200);
-                $("#heart-prize").html(2);
-                $("#str-prize").html(2);
-                $("#flex-prize").html(2);
-                break;
-            case 2:
-                $("#gold-prize").html(1850);
-                $("#heart-prize").html(3);
-                $("#str-prize").html(3);
-                $("#flex-prize").html(2);
-                break;
-            default:
-                $("#gold-prize").html(0);
-                $("#heart-prize").html(0);
-                $("#str-prize").html(0);
-                $("flex-prize").html(0);
-                break;
-        }
-    }
-
-    function updateDifficulty(evento) {
-        var gold = parseInt($("#gold-prize").html());
-        var cardio = parseInt($("#heart-prize").html());
-        var str = parseInt($("#str-prize").html());
-        var flex = parseInt($("#flex-prize").html());
-        switch (evento) {
-            case 1:
-                if ($("#dif1").is(":checked")) {
-                    $("#gold-total-prize").html(gold + 100);
-                } else {
-                    $("#gold-total-prize").html(gold);
-                }
-                break;
-            case 2:
-                if ($("#dif2").is(":checked")) {
-                    $("#heart-total-prize").html(cardio + 1);
-                } else {
-                    $("#heart-total-prize").html(cardio);
-                }
-                break;
-            case 3:
-                if ($("#dif3").is(":checked")) {
-                    $("#str-total-prize").html(str + 1);
-                } else {
-                    $("#str-total-prize").html(str);
-                }
-                break;
-            case 4:
-                if ($("#dif4").is(":checked")) {
-                    $("#flex-total-prize").html(flex + 1);
-                } else {
-                    $("#flex-total-prize").html(flex);
-                }
-                break;
-            default:
-                $("#gold-total-prize").html(gold);
-                $("#heart-total-prize").html(heart);
-                $("#str-total-prize").html(str);
-                $("#flex-total-prize").html(flex);
-                break;
-        }
-    }
-
-    function doRoutine() {
-        var gold = parseInt($("#gold-total-prize").html());
-        var cardio = parseInt($("#heart-total-prize").html());
-        var str = parseInt($("#str-total-prize").html());
-        var flex = parseInt($("#flex-total-prize").html());
-        addResource(gold, cardio, str, flex);
-        openBlock(0);
-    }
-
-    function alertFunds(lackingFunds) {
-        lackingFunds.forEach(id => {
-            $(id).addClass('lack-funds');
-            setTimeout(function () { $(id).removeClass('lack-funds'); }, 1000);
-        });
-
-    }
-
-    function addResource(goldVal, heartVal, strVal, flexVal) {
-
-        // $("label").removeClass('lack-funds');
-        if (gold + goldVal < 0 || heart + heartVal < 0 || str + strVal < 0 || flex + flexVal < 0) {
-
-            var variables = []
-
-            if (gold + goldVal < 0) variables.push('#gold')
-            if (heart + heartVal < 0) variables.push('#heart')
-            if (str + strVal < 0) variables.push('#str')
-            if (flex + flexVal < 0) variables.push('#flex')
-
-            alertFunds(variables)
-            return false;
-        }
-
-        gold += goldVal;
-        heart += heartVal;
-        str += strVal;
-        flex += flexVal;
-
-        //UPDATE RESCOURCES
-        $("#gold").html(gold);
-        $("#heart").html(heart);
-        $("#str").html(str);
-        $("#flex").html(flex);
-        $("#desenvolver-quartel-popup").modal('hide');
-        return true;
-    }
-
-    function openBlock(blockValue) {
-
-        $("#quick-start-icon").show();
-        $(".mainBlock").hide();
-        switch (blockValue) {
-            case 0:
-                $("#aldeia").show();
-                break;
-            case 1:
-                $("#centro").show();
-                $("#quick-start-icon").hide();
-                break;
-            case 2:
-                $("#quartel").show();
-                break;
-            case 3:
-                $("#territorio").show();
-                break;
-            case 4:
-                $("#prep-ataque").show();
-                break;
-            case 5:
-                $("#iniciar-rotina").show();
-                $("#quick-start-icon").hide();
-                break;
-            default:
-                $("#aldeia").show();
-                break;
-        }
-    }
-    function addTroop(troopNr) {
-        switch (troopNr) {
-            case 0:
-                if (addResource(-100, -2, -1, 0)) {
-                    lance++;
-                    $(".lanceNr").html(lance);
-                    $("#lanceiros-selecionados").attr('max', lance);
-
-                }
-                break;
-            case 1:
-                if (addResource(-150, -2, -2, -2)) {
-                    arche++;
-                    $(".archeNr").html(arche);
-                    $("#arqueiros-selecionados").attr('max', arche);
-                }
-                break;
-        }
-    }
-    const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
-
-    const alert = (message, type) => {
-        const wrapper = document.createElement('div')
-        wrapper.innerHTML = [
-            `<div class="alert alert-${type} alert-dismissible fade show" role="alert">`,
-            `   <div>${message}</div>`,
-            '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
-            '</div>'
-        ].join('')
-
-        alertPlaceholder.append(wrapper)
-    }
-    function startAttack() {
-        if (parseInt($("#arqueiros-selecionados").val()) < 1 && parseInt($("#lanceiros-selecionados").val()) < 1) {
-            alert('Não pode atacar sem tropas!', 'danger');
-            setTimeout(function () { $(".alert").alert('close'); }, 1000);
-        } else {
-            openBlock(0);
-        }
-    }
-
-        function addElement() {
-            $("#troopTable").append(`
-            <tr>
-            <td><button onclick="addResource(-150, -2, -2, -2); addTroop(1);">Arqueiro <span class="archeNr"></span></button></td>
-            <td><img src="assets/ouro.png" width="25" height="25">150</td>
-            <td><img src="assets/cardio.png" width="25" height="25">2</td>
-            <td><img src="assets/forca.png" width="25" height="25">2</td>
-            <td><img src="assets/flexibilidade.png" width="25" height="25">2</td>
-            <td><button onclick="removeElement(this)";
-            </tr>`
-            );
-        }
-
-        function removeElement(element) {
-            console.log($(element).parent().parent().remove())
-
-        }
-</script>
+<script src="script.js"></script>
 
 </html>
