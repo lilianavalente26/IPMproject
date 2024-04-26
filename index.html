@@ -38,9 +38,52 @@
                     <img src="assets\flexibilidade.png" class="resource">
                     <label id="flex"></label>
                 </div>
-                <div class="resource-display col-4"></div>
+                <div class="resource-display col-1"></div>
+                <div class="resource-display col-3" id="clocks"></div>
                 <div class="config col-4">
                     <img src="assets\config.png" style="cursor:pointer" width="50" height="50">
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TOASTS -->
+        <!-- TOASTS -->
+        <!-- TOASTS -->
+        
+        
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div class="toast" id="start-attack-toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img src="..." class="rounded me-2" alt="...">
+                    <strong class="me-auto">Ataque iniciado</strong>
+                    <small>Agora mesmo</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Iniciado ataque à Aldeia-Mãe. As tropas retornarão em 5 minutos.
+                </div>
+            </div>
+            <div class="toast" id="lanceiro-recrutado-toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img src="..." class="rounded me-2" alt="...">
+                    <strong class="me-auto">Lanceiro</strong>
+                    <small>Agora mesmo</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Recrutado 1 Lanceiro para as tropas da Aldeia.
+                </div>
+            </div>
+            <div class="toast" id="arqueiro-recrutado-toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img src="..." class="rounded me-2" alt="...">
+                    <strong class="me-auto">Arqueiro</strong>
+                    <small>Agora mesmo</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Recrutado 1 Arqueiro para as tropas da Aldeia.
                 </div>
             </div>
         </div>
@@ -407,19 +450,22 @@
 
     <div class="mainBlock" id="iniciar-rotina">
         <!-- Modal -->
-        <div class="modal fade" id="congratulations" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="congratulations" tabindex="-1" aria-labelledby="staticBackdropLabel"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header bg-success">
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Parabéns!</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-6" style="border-right: solid;">
-                                <h3 class="screen-title">Prémio:</h3>
+                            <div class="col-6 screen-title" style="border-right: solid;">
+                                <img src="assets/congratulations-icon.png" width="100" height="100">
+                            </div>
+                            <div class="col-6">
+                                <h3 class="screen-title">Prémio final:</h3>
                                 <div class="row">
                                     <div class="resource-display col-6">
                                         <img src="assets\ouro.png" class="resource">
@@ -441,19 +487,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <h3 class="screen-title">Novas Tarefas:</h3>
-                                <ul class="list-group">
-                                    <li class="list-group-item">Jumping Jacks II</li>
-                                    <li class="list-group-item">Mountain Climbers II</li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="doRoutine(); setTimeout(openBlock(0), 1000)" 
-                        data-bs-dismiss="modal" aria-label="Close">Ok</button>
+                        <button type="button" class="btn btn-primary"
+                            onclick="doRoutine(); setTimeout(openBlock(0), 1000)" data-bs-dismiss="modal"
+                            aria-label="Close">Ok</button>
                     </div>
                 </div>
             </div>
@@ -563,7 +603,7 @@
         </div>
         <div class="centered-button container-fluid">
             <span data-bs-toggle="modal" data-bs-target="#congratulations" style="cursor: pointer;">
-                <img src="assets/start-button.png"  width="100" height="100"></span>
+                <img src="assets/start-button.png" width="100" height="100"></span>
         </div>
     </div>
 
@@ -729,8 +769,9 @@
                 <div class="col-lg-5 col-md-5" id="start-column">
                     <div class="row">
                         <div class="col-12">
-                            <img src="assets\sword.png" onclick="startAttack()" style="cursor: pointer;" width="100"
-                                height="100">
+                            <img src="assets\sword.png"
+                                onclick="startAttack(); startTimer(1);"
+                                style="cursor: pointer;" width="100" height="100">
                             <label>Atacar!</label>
                         </div>
                     </div>
@@ -754,7 +795,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="footer-box col-md-3 offset-md-1" data-bs-toggle="tooltip" data-bs-placement="top"
-                    data-bs-title="Voltar para a minha aldeia" id="return-to-aldeia">
+                    data-bs-title="Voltar para a minha aldeia" id="return-to-aldeia" style="cursor: pointer;">
                     <img onclick="openBlock(0)" class="footer-nav-icon" src="assets\aldeia-legendada.png">
                 </div>
                 <div class="footer-box col-md-3 offset-md-1">
@@ -773,6 +814,8 @@
                     created by Freepik - Flaticon</a>
                 <a href="https://www.flaticon.com/free-icons/village" title="village icons">Village
                     icons created by Freepik - Flaticon</a>
+                <a href="https://www.flaticon.com/free-icons/next-level" title="next level icons">Next level icons
+                    created by IconBaandar - Flaticon</a>
             </div>
         </div>
 

@@ -25,11 +25,11 @@ const cavalryStats = [300, 100, 1, 1, 1];
  * @enum {{name: string, resource: string}}
  */
 const Building = Object.freeze({
-    CASTELO:   { name: "castelo", resource: "heart" },
-    CENTRO:  { name: "centro", resource: "gold" },
+    CASTELO: { name: "castelo", resource: "heart" },
+    CENTRO: { name: "centro", resource: "gold" },
     QUINTA: { name: "quinta", resource: "str" },
-    MERCADO: { name: "mercado", resource: "flex"}
-  });
+    MERCADO: { name: "mercado", resource: "flex" }
+});
 
 class Task {
     constructor(level, name, building) {
@@ -96,7 +96,7 @@ $(document).ready(function () {
 
 });
 
-function addTaskToList(task){
+function addTaskToList(task) {
     switch (task.building) {
         case Building.CASTELO:
             castleTasks.set(task.name, task);
@@ -113,13 +113,13 @@ function addTaskToList(task){
     }
 }
 
-function createRoutine(name, tasks){
+function createRoutine(name, tasks) {
     var list = [];
     tasks.forEach(task => list.push(task));
     mapOfRoutines.set(name, list);
 }
 
-function setupStartingTasks(){
+function setupStartingTasks() {
     var task1 = new Task(1, "Jumping Jacks I", Building.CASTELO);
     var task2 = new Task(1, "Mountain Climbers I", Building.CASTELO);
     var task3 = new Task(1, "Flamingo I", Building.MERCADO);
@@ -134,11 +134,11 @@ function setupStartingTasks(){
     addTaskToList(task6);
 }
 
-function setupBasicRoutine(){
-    var tasks = 
-    [castleTasks.get("Jumping Jacks I"), farmTasks.get("Flexões I"), 
-    farmTasks.get("Abdominais I"), castleTasks.get("Mountain Climbers I"), 
-    marketTasks.get("Flamingo I"), marketTasks.get("Tocar Os Calcanhares I")];
+function setupBasicRoutine() {
+    var tasks =
+        [castleTasks.get("Jumping Jacks I"), farmTasks.get("Flexões I"),
+        farmTasks.get("Abdominais I"), castleTasks.get("Mountain Climbers I"),
+        marketTasks.get("Flamingo I"), marketTasks.get("Tocar Os Calcanhares I")];
     createRoutine("Rotina Basica", tasks);
 }
 
@@ -148,11 +148,11 @@ function calculateBaseRoutinePrize(routineName) {
     var h = 0;
     var s = 0;
     var f = 0;
-    for(i=0;i<tasks.length;i++){
+    for (i = 0; i < tasks.length; i++) {
         g += (tasks[i].level * 200);
-        h += (tasks[i].building==Building.CASTELO) ? tasks[i].level : 0;
-        s += (tasks[i].building==Building.QUINTA) ? tasks[i].level : 0;
-        f += (tasks[i].building==Building.MERCADO) ? tasks[i].level : 0;
+        h += (tasks[i].building == Building.CASTELO) ? tasks[i].level : 0;
+        s += (tasks[i].building == Building.QUINTA) ? tasks[i].level : 0;
+        f += (tasks[i].building == Building.MERCADO) ? tasks[i].level : 0;
     }
     return [g, h, s, f];
 }
@@ -347,7 +347,8 @@ function addTroop(troopNr) {
                 lancer++;
                 $(".lanceNr").html(lancer);
                 $("#lanceiros-selecionados").attr('max', lancer);
-
+                const toast = new bootstrap.Toast($("#lanceiro-recrutado-toast"));
+                toast.show()
             }
             break;
         case 1:
@@ -355,6 +356,8 @@ function addTroop(troopNr) {
                 archer++;
                 $(".archeNr").html(archer);
                 $("#arqueiros-selecionados").attr('max', archer);
+                const toast = new bootstrap.Toast($("#arqueiro-recrutado-toast"));
+                toast.show()
             }
             break;
     }
@@ -377,10 +380,44 @@ function startAttack() {
         alert('Não pode atacar sem tropas!', 'danger');
         setTimeout(function () { $(".alert").alert('close'); }, 1000);
     } else {
+        const toast = new bootstrap.Toast($("#start-attack-toast"));
+        toast.show()
         openBlock(0);
     }
 }
 
+
+var endTime = 0;
+
+function startTimer(minutes) {
+    var now = new Date();
+    now = (Date.parse(now) / 1000);
+
+    if (endTime == 0) {
+        endTime = now + minutes * 60;
+    }
+    var refreshIntervalId = setInterval(makeTimer, 1000);
+
+    setTimeout(function () {clearInterval(refreshIntervalId);$("#clocks").html(""); endTime=0;}, (minutes * 60000));
+
+}
+
+function makeTimer() {
+    var now = new Date();
+    now = (Date.parse(now) / 1000);
+
+    var timeLeft = endTime - now;
+
+    var days = Math.floor(timeLeft / 86400);
+    var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
+    var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600)) / 60);
+    var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+    if (hours < "10") { hours = "0" + hours; }
+    if (minutes < "10") { minutes = "0" + minutes; }
+    if (seconds < "10") { seconds = "0" + seconds; }
+
+    $("#clocks").html("Ataque em curso: " + hours + ":" + minutes + ":" + seconds);
+}
 function addElement() {
     $("#troopTable").append(`
         <tr>
