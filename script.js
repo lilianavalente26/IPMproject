@@ -113,6 +113,9 @@ function addTaskToList(task) {
             break;
     }
 }
+function addTasksToList(tasks) {
+    tasks.forEach(addTaskToList);
+}
 
 function createRoutine(name, tasks) {
     var list = [];
@@ -151,6 +154,7 @@ function setupAMinhaRotina() {
             farmTasks.get("Flexões I"), marketTasks.get("Flamingo I"),
             marketTasks.get("Tocar Os Calcanhares I")];
         createRoutine("A Minha Rotina", tasks);
+        return;
     } else 
     return;
 }
@@ -205,14 +209,15 @@ function checkPopup(id, goldCost, heartCost, strCost, flexCost) {
     }
 }
 
-function upgradeTask(task) {
-    var newTask = new Task(task.level + 1, task.name + "I", task.Building);
-    addTaskToList(newTask);
+function upgradeTask(task, name, listOfTasks) {
+    var newTask = new Task(task.level+1, name+"I", task.building);
+    listOfTasks.push(newTask);
 }
 function upgradeBuilding(building) {
+    var listOfTasks = [];
     switch (building) {
         case Building.CASTELO:
-            castleTasks.forEach(upgradeTask);
+            castleTasks.forEach((value, key) => {upgradeTask(value, key, listOfTasks)});
             break;
         case Building.MERCADO:
             marketTasks.forEach(upgradeTask);
@@ -223,6 +228,7 @@ function upgradeBuilding(building) {
         default:
             break;
     }
+    addTasksToList(listOfTasks);
 }
 
 function upgradeCastle() {
@@ -246,7 +252,6 @@ function updatePrize(evento) {
     switch (evento) {
         case 1:
             currentPrize = calculateBaseRoutinePrize("Rotina Basica");
-
             $(".gold-prize").html(currentPrize[0]);
             $(".heart-prize").html(currentPrize[1]);
             $(".str-prize").html(currentPrize[2]);

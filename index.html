@@ -57,7 +57,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
                 <div class="toast-body">
-                    Iniciado ataque à Aldeia-Mãe. As tropas retornarão em 5 minutos.
+                    Iniciado ataque à Aldeia-Mãe. As tropas retornarão em 1 minuto.
                 </div>
             </div>
             <div class="toast" id="lanceiro-recrutado-toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -323,9 +323,8 @@
 
         <div class="row">
             <div class="col-4"></div>
-            <div class="col-1">
-                <span data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Desenvolver o castelo"
-                    style="cursor:pointer" onclick="checkPopup('#botao-desenvolver', 5000, 20, 5, 5)"
+            <div class="col-1" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Desenvolver o castelo">
+                <span style="cursor:pointer" onclick="checkPopup('#botao-desenvolver', 5000, 20, 5, 5)"
                     data-bs-toggle="modal" data-bs-target="#desenvolver-castelo-popup"><img
                         src="assets/castelo-upgrade.png" width="60" height="60"></span>
             </div>
