@@ -146,14 +146,14 @@
         <h1 class="screen-title">Aldeia.</h1>
         <div class="container-fluid">
             <div class=row>
-                <div class="feature-box col-md-3 offset-md-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                <div class="feature-box col-sm-3 offset-sm-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
                     data-bs-title="Quinta"
                     data-bs-content="Onde trabalham Agricultores. Quem aqui labuta ganha força. <<POR IMPLEMENTAR>>"
                     id="quinta-icon">
                     <img class="main-screen-icon" src="assets\quinta-legendada.png" onclick="openBlock(0)"
                         style="cursor:pointer">
                 </div>
-                <div class="feature-box col-md-3 offset-md-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                <div class="feature-box col-sm-3 offset-sm-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
                     data-bs-title="Território"
                     data-bs-content="Aldeias vizinhas são fonte de recursos e preocupação. Que estarão os outros nobres a fazer agora?"
                     id="territorio-icon" data-bs-placement="left">
@@ -162,14 +162,14 @@
                 </div>
             </div>
             <div class="row">
-                <div class="feature-box col-md-3 offset-md-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                <div class="feature-box col-sm-3 offset-sm-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
                     data-bs-title="Castelo"
                     data-bs-content="Onde se treinam as Tropas. Os jovens precisam de um coração forte para defender a aldeia."
                     id="castelo-icon">
                     <img class="main-screen-icon" src="assets\castelo-legendado.png" onclick="openBlock(2)"
                         style="cursor:pointer">
                 </div>
-                <div class="feature-box col-md-3 offset-md-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                <div class="feature-box col-sm-3 offset-sm-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
                     data-bs-title="Mercado"
                     data-bs-content="Onde os Mercadores fazem os seus negócios. Um bom mercador é ágil e flexível. <<POR IMPLEMENTAR>>"
                     id="mercado-icon" data-bs-placement="left">
@@ -178,14 +178,14 @@
                 </div>
             </div>
             <div class="row">
-                <div class="feature-box col-md-3 offset-md-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                <div class="feature-box col-sm-3 offset-sm-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
                     data-bs-title="População"
                     data-bs-content="Numa aldeia, cada um tem um papel importante a desempenhar. O que é mais importante agora? <<POR IMPLEMENTAR>>"
                     id="populacao-icon">
                     <img class="main-screen-icon" src="assets\populacao-legendada.png" onclick="openBlock(0)"
                         style="cursor:pointer">
                 </div>
-                <div class="feature-box col-md-3 offset-md-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                <div class="feature-box col-sm-3 offset-sm-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
                     data-bs-title="Centro da Aldeia"
                     data-bs-content="É o dever de um líder ouvir os seus súbditos. Aqui são expostas tarefas a fazer, e podem-se definir rotinas para as realizar. Ao trabalho!"
                     id="centro-icon" data-bs-placement="left">
@@ -842,18 +842,20 @@
     <div class="footer" id="footer-navigation">
         <div class="container-fluid">
             <div class="row">
-                <div class="footer-box col-md-3 offset-md-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                <div class="footer-box col-sm-3 offset-sm-1" data-bs-toggle="tooltip" data-bs-placement="top"
                     data-bs-title="Voltar para a minha aldeia" id="return-to-aldeia" style="cursor: pointer;">
                     <img onclick="openBlock(0)" class="footer-nav-icon" src="assets\aldeia-legendada.png">
                 </div>
-                <div class="footer-box col-md-3 offset-md-1">
+                <div class="footer-box col-sm-3 offset-sm-1">
                     <button type="button" id="quick-start-icon" onclick="openBlock(5)" class="btn btn-success btn-lg"
                         data-bs-toggle="tooltip" data-bs-placement="top"
-                        data-bs-title="Iniciar a rotina de tarefas preferida">
+                        data-bs-title="Iniciar a rotina de tarefas preferida <<POR IMPLEMENTAR>>">
                         <img class="footer-nav-icon" src="assets\start-button.png"></button>
                 </div>
-                <div class="footer-box col-md-3 offset-md-1" id="return-to-aldeia">
-                    <img class="footer-nav-icon" src="assets\write.png" onclick="openBlock(0)" style="cursor:pointer">
+                <div class="footer-box col-sm-3 offset-sm-1" id="lista-de-tarefas">
+                    <img class="footer-nav-icon" src="assets\lista-tarefas.png" 
+                    data-bs-toggle="tooltip" data-bs-placement="top"
+                    data-bs-title="Lista de tarefas <<POR IMPLEMENTAR>>" onclick="openBlock(0)" style="cursor:pointer">
                 </div>
                 <br>
                 <br>
