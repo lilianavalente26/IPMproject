@@ -49,6 +49,7 @@ setupBasicRoutine();
 
 var currentRoutine = [];
 var currentPrize = [0, 0, 0, 0];
+var currentLoot = [0, 0, 0, 0];
 
 var gold = startingGold;
 var heart = startingHeart;
@@ -57,6 +58,7 @@ var flex = startingFaith;
 var lancer = 0;
 var archer = 0;
 var cavalry = 0;
+var upgradedCastle = false;
 
 // TODO: PADRONIZAR OS VALORES DAS COISAS TODAS NO JAVASCRIPT. O HTML DEVE SER PREENCHIDO SÓ COM ISTO EM TODAS AS OCASIOES.
 // TODO: criar mainblock para lista de tarefas
@@ -79,14 +81,13 @@ $(document).ready(function () {
 
     //ENABLE "ALDEIA" AT STARTUP
     $('#aldeia').show();
+    upgradedCastle = false;
 
     //UPDATE RESCOURCES
     $("#gold").html(gold);
     $("#heart").html(heart);
     $("#str").html(str);
     $("#flex").html(flex);
-
-    console.log()
 
     $(".lanceNr").html(lancer)
     $(".archeNr").html(archer)
@@ -142,6 +143,18 @@ function setupBasicRoutine() {
     createRoutine("Rotina Basica", tasks);
 }
 
+function setupAMinhaRotina() {
+    if (upgradedCastle) {
+        var tasks =
+            [castleTasks.get("Jumping Jacks I"), farmTasks.get("Flexões I"),
+            farmTasks.get("Abdominais I"), castleTasks.get("Mountain Climbers II"),
+            farmTasks.get("Flexões I"), marketTasks.get("Flamingo I"),
+            marketTasks.get("Tocar Os Calcanhares I")];
+        createRoutine("A Minha Rotina", tasks);
+    } else 
+    return;
+}
+
 function calculateBaseRoutinePrize(routineName) {
     var tasks = mapOfRoutines.get(routineName);
     var g = 0;
@@ -163,109 +176,157 @@ function updateLoot(tropa) {
     switch (tropa) {
         case 1:
             var val = parseInt($("#lanceiros-selecionados").val());
-            $("#gold-loot").html(val * lancerStats[1]);
-            $("#heart-loot").html(val * lancerStats[2]);
-            $("#str-loot").html(val * lancerStats[3]);
-            $("#flex-loot").html(val * lancerStats[4]);
+            $(".gold-loot").html(val * lancerStats[1]);
+            $(".heart-loot").html(val * lancerStats[2]);
+            $(".str-loot").html(val * lancerStats[3]);
+            $(".flex-loot").html(val * lancerStats[4]);
             break;
         case 2:
             var val = parseInt($("#arqueiros-selecionados").val());
-            $("#gold-loot").html(val * archerStats[1]);
-            $("#heart-loot").html(val * archerStats[2]);
-            $("#str-loot").html(val * archerStats[3]);
-            $("#flex-loot").html(val * archerStats[4]);
+            $(".gold-loot").html(val * archerStats[1]);
+            $(".heart-loot").html(val * archerStats[2]);
+            $(".str-loot").html(val * archerStats[3]);
+            $(".flex-loot").html(val * archerStats[4]);
             break;
         default:
-            $("#gold-loot").html(0);
-            $("#heart-loot").html(0);
-            $("#str-loot").html(0);
-            $("#flex-loot").html(0);
+            $(".gold-loot").html(0);
+            $(".heart-loot").html(0);
+            $(".str-loot").html(0);
+            $(".flex-loot").html(0);
             break;
     }
 }
 
-function checkPopup(id) {
-    if (gold < 5000 || heart < 20 || str < 5 || flex < 5) {
+function checkPopup(id, goldCost, heartCost, strCost, flexCost) {
+    if (gold < goldCost || heart < heartCost || str < strCost || flex < flexCost) {
         $(id).addClass("disabled");
     } else {
         $(id).removeClass("disabled");
     }
 }
 
+function upgradeTask(task) {
+    var newTask = new Task(task.level + 1, task.name + "I", task.Building);
+    addTaskToList(newTask);
+}
+function upgradeBuilding(building) {
+    switch (building) {
+        case Building.CASTELO:
+            castleTasks.forEach(upgradeTask);
+            break;
+        case Building.MERCADO:
+            marketTasks.forEach(upgradeTask);
+            break;
+        case Building.QUINTA:
+            farmTasks.forEach(upgradeTask);
+            break;
+        default:
+            break;
+    }
+}
+
+function upgradeCastle() {
+    addResource(-5000, -20, -5, -5);
+    upgradeBuilding(Building.CASTELO);
+    upgradedCastle = true;
+    //TIRAR DAQUI:
+    setupAMinhaRotina();
+}
+function upgradeFarm() {
+    addResource(-5000, -5, -20, -5);
+    upgradeBuilding(Building.QUINTA);
+}
+function upgradeMarket() {
+    addResource(-5000, -5, -5, -20);
+    upgradeBuilding(Building.MERCADO);
+}
+
+
 function updatePrize(evento) {
     switch (evento) {
         case 1:
             currentPrize = calculateBaseRoutinePrize("Rotina Basica");
 
-            $("#gold-prize").html(currentPrize[0]);
-            $("#heart-prize").html(currentPrize[1]);
-            $("#str-prize").html(currentPrize[2]);
-            $("#flex-prize").html(currentPrize[3]);
+            $(".gold-prize").html(currentPrize[0]);
+            $(".heart-prize").html(currentPrize[1]);
+            $(".str-prize").html(currentPrize[2]);
+            $(".flex-prize").html(currentPrize[3]);
             break;
         case 2:
-            $("#gold-prize").html(1850);
-            $("#heart-prize").html(3);
-            $("#str-prize").html(3);
-            $("#flex-prize").html(2);
+            currentPrize = calculateBaseRoutinePrize("A Minha Rotina");
+            $(".gold-prize").html(currentPrize[0]);
+            $(".heart-prize").html(currentPrize[1]);
+            $(".str-prize").html(currentPrize[2]);
+            $(".flex-prize").html(currentPrize[3]);
             break;
         default:
-            $("#gold-prize").html(0);
-            $("#heart-prize").html(0);
-            $("#str-prize").html(0);
-            $("flex-prize").html(0);
+            $(".gold-prize").html(0);
+            $(".heart-prize").html(0);
+            $(".str-prize").html(0);
+            $(".flex-prize").html(0);
             break;
     }
 }
 
 function updateDifficulty(evento) {
-    var gold = parseInt($("#gold-prize").html());
-    var cardio = parseInt($("#heart-prize").html());
-    var str = parseInt($("#str-prize").html());
-    var flex = parseInt($("#flex-prize").html());
+
     switch (evento) {
         case 1:
             if ($("#dif1").is(":checked")) {
-                $("#gold-total-prize").html(gold + 100);
+                currentPrize[0] += 100;
+                $(".gold-prize").html(currentPrize[0]);
             } else {
-                $("#gold-total-prize").html(gold);
+                currentPrize[0] -= 100;
+                $(".gold-prize").html(currentPrize[0]);
             }
             break;
         case 2:
             if ($("#dif2").is(":checked")) {
-                $("#heart-total-prize").html(cardio + 1);
+                currentPrize[1] += 1;
+                $(".heart-prize").html(currentPrize[1]);
             } else {
-                $("#heart-total-prize").html(cardio);
+                currentPrize[1] -= 1;
+                $(".heart-prize").html(currentPrize[1]);
             }
             break;
         case 3:
             if ($("#dif3").is(":checked")) {
-                $("#str-total-prize").html(str + 1);
+                currentPrize[2] += 1;
+                $(".str-prize").html(currentPrize[2]);
             } else {
-                $("#str-total-prize").html(str);
+                currentPrize[2] -= 1;
+                $(".str-prize").html(currentPrize[2]);
             }
             break;
         case 4:
             if ($("#dif4").is(":checked")) {
-                $("#flex-total-prize").html(flex + 1);
+                currentPrize[3] += 1;
+                $(".flex-prize").html(currentPrize[3]);
             } else {
-                $("#flex-total-prize").html(flex);
+                currentPrize[3] -= 1;
+                $(".flex-prize").html(currentPrize[3]);
             }
             break;
         default:
-            $("#gold-total-prize").html(gold);
-            $("#heart-total-prize").html(heart);
-            $("#str-total-prize").html(str);
-            $("#flex-total-prize").html(flex);
+            $(".gold-prize").html(currentPrize[0]);
+            $(".heart-prize").html(currentPrize[1]);
+            $(".str-prize").html(currentPrize[2]);
+            $(".flex-prize").html(currentPrize[3]);
             break;
     }
 }
 
 function doRoutine() {
-    var gold = parseInt($("#gold-total-prize").html());
-    var cardio = parseInt($("#heart-total-prize").html());
-    var str = parseInt($("#str-total-prize").html());
-    var flex = parseInt($("#flex-total-prize").html());
-    addResource(gold, cardio, str, flex);
+
+    addResource(currentPrize[0], currentPrize[1], currentPrize[2], currentPrize[3]);
+    $('input.form-check-input').prop('checked', false);
+    currentPrize[0] = 0;
+    currentPrize[1] = 0;
+    currentPrize[2] = 0;
+    currentPrize[3] = 0;
+    $('#select-rotina option[value="0"]').prop('selected', true);
+    updatePrize(-1);
+
 }
 
 function alertFunds(lackingFunds) {
@@ -328,6 +389,7 @@ function openBlock(blockValue) {
             $("#prep-ataque").show();
             break;
         case 5:
+            $('input.form-check-input').prop('checked', false);
             $("#iniciar-rotina").show();
             $("#quick-start-icon").hide();
             break;
@@ -380,10 +442,29 @@ function startAttack() {
         alert('Não pode atacar sem tropas!', 'danger');
         setTimeout(function () { $(".alert").alert('close'); }, 1000);
     } else {
+        var lance = parseInt($("#lanceiros-selecionados").val());
+        var arch = parseInt($("#arqueiros-selecionados").val());
+        currentLoot[0] = lance * lancerStats[1] + arch * archerStats[1];
+        currentLoot[1] = lance * lancerStats[2] + arch * archerStats[2];
+        currentLoot[2] = lance * lancerStats[3] + arch * archerStats[3];
+        currentLoot[3] = lance * lancerStats[4] + arch * archerStats[4];
+        $(".gold-loot").html(currentLoot[0]);
+        $(".heart-loot").html(currentLoot[1]);
+        $(".str-loot").html(currentLoot[2]);
+        $(".flex-loot").html(currentLoot[3]);
         const toast = new bootstrap.Toast($("#start-attack-toast"));
-        toast.show()
+        toast.show();
+
         openBlock(0);
     }
+}
+
+function acceptResult() {
+    addResource(currentLoot[0], currentLoot[1], currentLoot[2], currentLoot[3]);
+    currentLoot[0] = 0;
+    currentLoot[1] = 0;
+    currentLoot[2] = 0;
+    currentLoot[3] = 0;
 }
 
 
@@ -398,8 +479,11 @@ function startTimer(minutes) {
     }
     var refreshIntervalId = setInterval(makeTimer, 1000);
 
-    setTimeout(function () {clearInterval(refreshIntervalId);$("#clocks").html(""); endTime=0;}, (minutes * 60000));
+    setTimeout(function () { clearInterval(refreshIntervalId); $("#clocks").html(""); endTime = 0; showAttackResult() }, (minutes * 60000));
+}
 
+function showAttackResult() {
+    $("#attack-finished").modal('show');
 }
 
 function makeTimer() {

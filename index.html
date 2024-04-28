@@ -46,12 +46,8 @@
             </div>
         </div>
 
+        <!-- TOASTS -->
 
-        <!-- TOASTS -->
-        <!-- TOASTS -->
-        <!-- TOASTS -->
-        
-        
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
             <div class="toast" id="start-attack-toast" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
@@ -87,6 +83,57 @@
                 </div>
             </div>
         </div>
+
+        <!-- MODAL -->
+
+        <div class="modal fade" id="attack-finished" tabindex="-1" aria-labelledby="staticBackdropLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header bg-success">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Vitória!</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-6 screen-title" style="border-right: solid;">
+                                <img src="assets/congratulations-icon.png" width="100" height="100">
+                            </div>
+                            <div class="col-6">
+                                <h3 class="screen-title">Saque final:</h3>
+                                <div class="row">
+                                    <div class="resource-display col-6">
+                                        <img src="assets\ouro.png" class="resource">
+                                        <label class="gold-loot"></label>
+                                    </div>
+                                    <div class="resource-display col-6">
+                                        <img src="assets\cardio.png" class="resource">
+                                        <label class="heart-loot"></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="resource-display col-6">
+                                        <img src="assets\forca.png" class="resource">
+                                        <label class="str-loot"></label>
+                                    </div>
+                                    <div class="resource-display col-6">
+                                        <img src="assets\flexibilidade.png" class="resource">
+                                        <label class="flex-loot"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="acceptResult()" data-bs-dismiss="modal"
+                            aria-label="Close">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal end-->
     </div>
 
 
@@ -157,9 +204,9 @@
 
     <div class="mainBlock" id="centro">
         <h1 class="screen-title">Centro da Aldeia.</h1>
-        <div class="container-fluid" id="select-rotina">
-            <select class="form-select form-select-lg w-50 p-3" id="selectionarRotina">
-                <option selected disabled onclick="updatePrize(0)">Selecione uma Rotina</option>
+        <div class="container-fluid" id="list-rotina">
+            <select class="form-select form-select-lg w-50 p-3" id="select-rotina">
+                <option selected disabled value="0" onclick="updatePrize(0)">Selecione uma Rotina</option>
                 <option value="1" onclick="updatePrize(1)">Rotina Básica</option>
                 <option value="2" onclick="updatePrize(2)">A Minha Rotina</option>
             </select>
@@ -175,21 +222,21 @@
                         <div class="row">
                             <div class="resource-display col-6">
                                 <img src="assets\ouro.png" class="resource">
-                                <label id="gold-prize">0</label>
+                                <label class="gold-prize">0</label>
                             </div>
                             <div class="resource-display col-6">
                                 <img src="assets\cardio.png" class="resource">
-                                <label id="heart-prize">0</label>
+                                <label class="heart-prize">0</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="resource-display col-6">
                                 <img src="assets\forca.png" class="resource">
-                                <label id="str-prize">0</label>
+                                <label class="str-prize">0</label>
                             </div>
                             <div class="resource-display col-6">
                                 <img src="assets\flexibilidade.png" class="resource">
-                                <label id="flex-prize">0</label>
+                                <label class="flex-prize">0</label>
                             </div>
                         </div>
                     </div>
@@ -268,7 +315,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
                         <button type="button" class="btn btn-success" id="botao-desenvolver"
-                            onclick="addResource(-5000, -20, -5, -5)">Desenvolver</button>
+                            onclick="upgradeCastle()">Desenvolver</button>
                     </div>
                 </div>
             </div>
@@ -277,9 +324,10 @@
         <div class="row">
             <div class="col-4"></div>
             <div class="col-1">
-                <span style="cursor:pointer" onclick="checkPopup('#botao-desenvolver')" data-bs-toggle="modal"
-                    data-bs-target="#desenvolver-castelo-popup"><img src="assets/castelo-upgrade.png" width="60"
-                        height="60"></span>
+                <span data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Desenvolver o castelo"
+                    style="cursor:pointer" onclick="checkPopup('#botao-desenvolver', 5000, 20, 5, 5)"
+                    data-bs-toggle="modal" data-bs-target="#desenvolver-castelo-popup"><img
+                        src="assets/castelo-upgrade.png" width="60" height="60"></span>
             </div>
             <div class="col-2">
                 <h1 class="screen-title"> Castelo.</h1>
@@ -469,21 +517,21 @@
                                 <div class="row">
                                     <div class="resource-display col-6">
                                         <img src="assets\ouro.png" class="resource">
-                                        <label id="gold-cost">5000</label>
+                                        <label class="gold-prize"></label>
                                     </div>
                                     <div class="resource-display col-6">
                                         <img src="assets\cardio.png" class="resource">
-                                        <label id="heart-cost">20</label>
+                                        <label class="heart-prize"></label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="resource-display col-6">
                                         <img src="assets\forca.png" class="resource">
-                                        <label id="str-cost">5</label>
+                                        <label class="str-prize"></label>
                                     </div>
                                     <div class="resource-display col-6">
                                         <img src="assets\flexibilidade.png" class="resource">
-                                        <label id="flex-cost">5</label>
+                                        <label class="flex-prize"></label>
                                     </div>
                                 </div>
                             </div>
@@ -498,6 +546,7 @@
                 </div>
             </div>
         </div>
+        <!-- Modal end-->
 
         <h1 class="screen-title">ROTINA</h1>
         <div class="container-fluid">
@@ -544,21 +593,21 @@
                             <div class="row">
                                 <div class="resource-display col-6">
                                     <img src="assets\ouro.png" class="resource">
-                                    <label id="gold-total-prize">1850</label>
+                                    <label class="gold-prize"></label>
                                 </div>
                                 <div class="resource-display col-6">
                                     <img src="assets\cardio.png" class="resource">
-                                    <label id="heart-total-prize">3</label>
+                                    <label class="heart-prize"></label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="resource-display col-6">
                                     <img src="assets\forca.png" class="resource">
-                                    <label id="str-total-prize">3</label>
+                                    <label class="str-prize"></label>
                                 </div>
                                 <div class="resource-display col-6">
                                     <img src="assets\flexibilidade.png" class="resource">
-                                    <label id="flex-total-prize">2</label>
+                                    <label class="flex-prize"></label>
                                 </div>
                             </div>
                         </div>
@@ -746,21 +795,21 @@
                             <div class="row">
                                 <div class="resource-display col-6">
                                     <img src="assets\ouro.png" class="resource">
-                                    <label id="gold-loot">0</label>
+                                    <label class="gold-loot">0</label>
                                 </div>
                                 <div class="resource-display col-6">
                                     <img src="assets\cardio.png" class="resource">
-                                    <label id="heart-loot">0</label>
+                                    <label class="heart-loot">0</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="resource-display col-6">
                                     <img src="assets\forca.png" class="resource">
-                                    <label id="str-loot">0</label>
+                                    <label class="str-loot">0</label>
                                 </div>
                                 <div class="resource-display col-6">
                                     <img src="assets\flexibilidade.png" class="resource">
-                                    <label id="flex-loot">0</label>
+                                    <label class="flex-loot">0</label>
                                 </div>
                             </div>
                         </div>
@@ -769,9 +818,8 @@
                 <div class="col-lg-5 col-md-5" id="start-column">
                     <div class="row">
                         <div class="col-12">
-                            <img src="assets\sword.png"
-                                onclick="startAttack(); startTimer(1);"
-                                style="cursor: pointer;" width="100" height="100">
+                            <img src="assets\sword.png" onclick="startAttack(); startTimer(1);" style="cursor: pointer;"
+                                width="100" height="100">
                             <label>Atacar!</label>
                         </div>
                     </div>
