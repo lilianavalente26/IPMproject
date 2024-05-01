@@ -206,9 +206,8 @@
         <h1 class="screen-title">Centro da Aldeia.</h1>
         <div class="container-fluid" id="list-rotina">
             <select class="form-select form-select-lg w-50 p-3" id="select-rotina">
-                <option selected disabled value="0" onclick="updatePrize(0)">Selecione uma Rotina</option>
-                <option value="1" onclick="updatePrize(1)">Rotina Básica</option>
-                <option value="2" onclick="updatePrize(2)">A Minha Rotina</option>
+                <option value="" selected disabled onclick="updatePrize(0)">Selecione uma Rotina</option>
+                <option onclick="updatePrize(this)">Rotina Básica</option>
             </select>
         </div>
         <div class="row">
@@ -662,44 +661,172 @@
 
 
     <div class="mainBlock" id="criar-rotina">
-        <h1 class="screen-title">ROTINA</h1>
+        <!-- Modal -->
+        <div class="modal fade" id="adicionar-exercicio-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="add-exercicio-modal-title">Adicionar: </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="accordion" id="select-edificio">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Castelo <img src="assets/castelo.png" width="25" height="25"
+                                            style="margin-left: 5%;">
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingOne" data-bs-parent="#select-edificio">
+                                    <div class="accordion-body">
+                                        <div class="d-grid gap-2">
+                                            <div class="btn-group-vertical exercicios-castelo" role="group"
+                                                aria-label="Vertical radio toggle button group">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                        Quinta <img src="assets/granja.png" width="25" height="25"
+                                            style="margin-left: 5%;">
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingTwo" data-bs-parent="#select-edificio">
+                                    <div class="accordion-body">
+                                        <div class="d-grid gap-2">
+                                            <div class="btn-group-vertical exercicios-quinta" role="group"
+                                                aria-label="Vertical radio toggle button group">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="true"
+                                        aria-controls="collapseThree">
+                                        Mercado <img src="assets/tienda.png" width="25" height="25"
+                                            style="margin-left: 5%;">
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingThree" data-bs-parent="#select-edificio">
+                                    <div class="accordion-body">
+                                        <div class="d-grid gap-2">
+                                            <div class="btn-group-vertical exercicios-mercado" role="group"
+                                                aria-label="Vertical radio toggle button group">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
+                        <button type="button" class="btn btn-success" id="botao-adicionar" data-bs-dismiss="modal"
+                            onclick="removeAddButton(); addExerciseToCreateRoutine()">Adicionar Selecionado</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="confirmar-nova-rotina" tabindex="-1" aria-labelledby="staticBackdropLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header bg-success">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirmar Nova Rotina</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-6 screen-title" style="border-right: solid;">
+                                <label for="nomeDeRotina" class="form-label">Escolha um Nome para a sua Rotina:</label>
+                                <input class="form-control" id= "nomeDeRotina" type="text" placeholder="<nome da minha rotina>" aria-label="default input example">
+                            </div>
+                            <div class="col-6">
+                                <h5 class="screen-title">Prémio quando for executada:</h5>
+                                <div class="row">
+                                    <div class="resource-display col-6">
+                                        <img src="assets\ouro.png" class="resource">
+                                        <label class="gold-prospect-prize"></label>
+                                    </div>
+                                    <div class="resource-display col-6">
+                                        <img src="assets\cardio.png" class="resource">
+                                        <label class="heart-prospect-prize"></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="resource-display col-6">
+                                        <img src="assets\forca.png" class="resource">
+                                        <label class="str-prospect-prize"></label>
+                                    </div>
+                                    <div class="resource-display col-6">
+                                        <img src="assets\flexibilidade.png" class="resource">
+                                        <label class="flex-prospect-prize"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
+                        <button type="button" class="btn btn-success"
+                            onclick="confirmNewRoutine(); setTimeout(openBlock(0), 1000)" data-bs-dismiss="modal"
+                            aria-label="Close">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <h1 class="screen-title">Criar Nova Rotina</h1>
         <div class="container-fluid">
-            <h2 class="screen-title"> Selecionar Dificuldade</h2>
+            <h2 class="screen-title"> Selecionar Tarefas:</h2>
             <div class="row">
-                <div class="col-4"></div>
-                <div class="screen-title col-4">
+                <div class="col-3"></div>
+                <div class="screen-title col-6 container-fluid">
                     <div class="tabela-exercicios">
                         <table class="table">
                             <thead class="fixed-header">
                                 <th>Tarefas:</th>
                             </thead>
-                            <tbody>
+                            <tbody id="lista-de-exercicios">
                                 <tr>
-                                    <td>Jumping Jacks I</td>
-                                </tr>
-                                <tr>
-                                    <td>Flexões I</td>
-                                </tr>
-                                <tr>
-                                    <td>Jumping Jacks I</td>
-                                </tr>
-                                <tr>
-                                    <td>Abdominais I</td>
-                                </tr>
-                                <tr>
-                                    <td>Mountain Climbers II</td>
-                                </tr>
-                                <tr>
-                                    <td>Flexões I</td>
-                                </tr>
-                                <tr>
-                                    <td>Flamingo I</td>
-                                </tr>
-                                <tr>
-                                    <td>Tocar os Calcanhares I</td>
+                                    <td><span id="adicionar-exercicio-button" data-bs-toggle="modal"
+                                            data-bs-target="#adicionar-exercicio-modal" style="cursor: pointer;">
+                                            <button class="btn btn-outline-info" onclick="">Adicionar tarefa</button>
+                                        </span>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                <div class="col-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <div class="centered-button container-fluid">
+                        <span data-bs-toggle="modal" data-bs-target="#confirmar-nova-rotina" style="cursor: pointer;" onclick="showProspectedPrize()">
+                            <img src="assets/write.png" width="75" height="75"><label>Criar Rotina</label></span>
                     </div>
                 </div>
                 <div class="col-4"></div>
@@ -746,7 +873,7 @@
                                     </button>
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    aria-labelledby="headingOne" data-bs-parent="#select-tropas">
                                     <div class="accordion-body">
                                         Tropas dedicadas ao ataque e à defesa. Estatísticas= Ataque: 2,
                                         Defesa: 2,
@@ -767,7 +894,7 @@
                                     </button>
                                 </h2>
                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                    data-bs-parent="#accordionExample">
+                                    data-bs-parent="#select-tropas">
                                     <div class="accordion-body">
                                         Tropas dedicadas à defesa. Estatísticas= Ataque: 1, Defesa: 3
                                         Fraqueza:
@@ -852,9 +979,9 @@
                         <img class="footer-nav-icon" src="assets\start-button.png"></button>
                 </div>
                 <div class="footer-box col-sm-3 offset-sm-1" id="lista-de-tarefas">
-                    <img class="footer-nav-icon" src="assets\lista-tarefas.png" 
-                    data-bs-toggle="tooltip" data-bs-placement="top"
-                    data-bs-title="Lista de tarefas <<POR IMPLEMENTAR>>" onclick="openBlock(0)" style="cursor:pointer">
+                    <img class="footer-nav-icon" src="assets\lista-tarefas.png" data-bs-toggle="tooltip"
+                        data-bs-placement="top" data-bs-title="Lista de tarefas <<POR IMPLEMENTAR>>"
+                        onclick="openBlock(0)" style="cursor:pointer">
                 </div>
                 <br>
                 <br>

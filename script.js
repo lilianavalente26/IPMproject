@@ -46,6 +46,7 @@ setupStartingTasks();
 
 const mapOfRoutines = new Map();
 setupBasicRoutine();
+fillTaskLists();
 
 var currentRoutine = [];
 var currentPrize = [0, 0, 0, 0];
@@ -143,7 +144,7 @@ function setupBasicRoutine() {
         [castleTasks.get("Jumping Jacks I"), farmTasks.get("Flexões I"),
         farmTasks.get("Abdominais I"), castleTasks.get("Mountain Climbers I"),
         marketTasks.get("Flamingo I"), marketTasks.get("Tocar Os Calcanhares I")];
-    createRoutine("Rotina Basica", tasks);
+    createRoutine("Rotina Básica", tasks);
 }
 
 function setupAMinhaRotina() {
@@ -155,8 +156,8 @@ function setupAMinhaRotina() {
             marketTasks.get("Tocar Os Calcanhares I")];
         createRoutine("A Minha Rotina", tasks);
         return;
-    } else 
-    return;
+    } else
+        return;
 }
 
 function calculateBaseRoutinePrize(routineName) {
@@ -210,14 +211,14 @@ function checkPopup(id, goldCost, heartCost, strCost, flexCost) {
 }
 
 function upgradeTask(task, name, listOfTasks) {
-    var newTask = new Task(task.level+1, name+"I", task.building);
+    var newTask = new Task(task.level + 1, name + "I", task.building);
     listOfTasks.push(newTask);
 }
 function upgradeBuilding(building) {
     var listOfTasks = [];
     switch (building) {
         case Building.CASTELO:
-            castleTasks.forEach((value, key) => {upgradeTask(value, key, listOfTasks)});
+            castleTasks.forEach((value, key) => { upgradeTask(value, key, listOfTasks) });
             break;
         case Building.MERCADO:
             marketTasks.forEach(upgradeTask);
@@ -235,42 +236,30 @@ function upgradeCastle() {
     addResource(-5000, -20, -5, -5);
     upgradeBuilding(Building.CASTELO);
     upgradedCastle = true;
+    castleTasks.forEach((value, key) => { showTask(Building.CASTELO, value, key) });
     //TIRAR DAQUI:
     setupAMinhaRotina();
 }
 function upgradeFarm() {
     addResource(-5000, -5, -20, -5);
     upgradeBuilding(Building.QUINTA);
+    farmTasks.forEach((value, key) => { showTask(Building.QUINTA, value, key) });
 }
 function upgradeMarket() {
     addResource(-5000, -5, -5, -20);
     upgradeBuilding(Building.MERCADO);
+    marketTasks.forEach((value, key) => { showTask(Building.MERCADO, value, key) });
 }
 
 
-function updatePrize(evento) {
-    switch (evento) {
-        case 1:
-            currentPrize = calculateBaseRoutinePrize("Rotina Basica");
-            $(".gold-prize").html(currentPrize[0]);
-            $(".heart-prize").html(currentPrize[1]);
-            $(".str-prize").html(currentPrize[2]);
-            $(".flex-prize").html(currentPrize[3]);
-            break;
-        case 2:
-            currentPrize = calculateBaseRoutinePrize("A Minha Rotina");
-            $(".gold-prize").html(currentPrize[0]);
-            $(".heart-prize").html(currentPrize[1]);
-            $(".str-prize").html(currentPrize[2]);
-            $(".flex-prize").html(currentPrize[3]);
-            break;
-        default:
-            $(".gold-prize").html(0);
-            $(".heart-prize").html(0);
-            $(".str-prize").html(0);
-            $(".flex-prize").html(0);
-            break;
-    }
+function updatePrize(element) {
+    var routineName = $(element).text();
+    currentPrize = calculateBaseRoutinePrize(routineName);
+
+    $(".gold-prize").html(currentPrize[0]);
+    $(".heart-prize").html(currentPrize[1]);
+    $(".str-prize").html(currentPrize[2]);
+    $(".flex-prize").html(currentPrize[3]);
 }
 
 function updateDifficulty(evento) {
@@ -507,20 +496,122 @@ function makeTimer() {
 
     $("#clocks").html("Ataque em curso: " + hours + ":" + minutes + ":" + seconds);
 }
-function addElement() {
-    $("#troopTable").append(`
-        <tr>
-        <td><button onclick="addResource(-150, -2, -2, -2); addTroop(1);">Arqueiro <span class="archeNr"></span></button></td>
-        <td><img src="assets/ouro.png" width="25" height="25">150</td>
-        <td><img src="assets/cardio.png" width="25" height="25">2</td>
-        <td><img src="assets/forca.png" width="25" height="25">2</td>
-        <td><img src="assets/flexibilidade.png" width="25" height="25">2</td>
-        <td><button onclick="removeElement(this)";
-        </tr>`
-    );
+
+function showTask(building, value, key) {
+    var encodedKey = key.replaceAll(" ", "-");
+    switch (building) {
+        case Building.CASTELO:
+            if ($(`#${encodedKey}`).length < 1) {
+                $(".exercicios-castelo").append(`
+            <input type="radio" class="btn-check" name="pick-exercise-radio" id=${encodedKey} value=${encodedKey}
+            autocomplete="off"> <label class="btn btn-outline-dark" for=${encodedKey}>${key} <img src="assets/cardio.png" width="25" height="25"> </label>`);
+            }
+            break;
+        case Building.MERCADO:
+            if ($(`#${encodedKey}`).length < 1) {
+                $(".exercicios-mercado").append(`
+            <input type="radio" class="btn-check" name="pick-exercise-radio" id=${encodedKey} value=${encodedKey}
+            autocomplete="off"> <label class="btn btn-outline-dark" for=${encodedKey}>${key} <img src="assets/flexibilidade.png" width="25" height="25"> </label>`);
+                break;
+            }
+        case Building.QUINTA:
+            if ($(`#${encodedKey}`).length < 1) {
+                $(".exercicios-quinta").append(`
+            <input type="radio" class="btn-check" name="pick-exercise-radio" id=${encodedKey} value=${encodedKey}
+            autocomplete="off"> <label class="btn btn-outline-dark" for=${encodedKey}>${key} <img src="assets/forca.png" width="25" height="25"> </label>`);
+                break;
+            }
+        default:
+            break;
+    }
 }
 
-function removeElement(element) {
+var numeroSequencial = 1;
+var creatingRoutine = [];
+
+function showProspectedPrize() {
+    var prize = calculateProspectedRoutinePrize(creatingRoutine);
+    $(".gold-prospect-prize").html(prize[0]);
+    $(".heart-prospect-prize").html(prize[1]);
+    $(".str-prospect-prize").html(prize[2]);
+    $(".flex-prospect-prize").html(prize[3]);
+}
+
+function calculateProspectedRoutinePrize(tasks) {
+    var g = 0;
+    var h = 0;
+    var s = 0;
+    var f = 0;
+    for (i = 0; i < tasks.length; i++) {
+        g += (tasks[i].level * 200);
+        h += (tasks[i].building == Building.CASTELO) ? tasks[i].level : 0;
+        s += (tasks[i].building == Building.QUINTA) ? tasks[i].level : 0;
+        f += (tasks[i].building == Building.MERCADO) ? tasks[i].level : 0;
+    }
+    return [g, h, s, f];
+}
+
+function confirmNewRoutine() {
+    var newName = $("#nomeDeRotina").val();
+    if (!mapOfRoutines.has(newName)) {
+        createRoutine(newName, creatingRoutine);
+        $('#select-rotina').append(`<option onclick="updatePrize(this)">${newName}</option>`);
+        
+    }
+}
+
+
+function fillTaskLists() {
+    castleTasks.forEach((value, key) => { showTask(Building.CASTELO, value, key) });
+    marketTasks.forEach((value, key) => { showTask(Building.MERCADO, value, key) });
+    farmTasks.forEach((value, key) => { showTask(Building.QUINTA, value, key) });
+}
+
+
+function addExerciseToCreateRoutine() {
+    var selectedElement = $("input[name='pick-exercise-radio']:checked");
+
+    var exercicio = selectedElement.val().replaceAll("-", " ");
+    var icon;
+    var currentTask;
+    if (selectedElement.parent().hasClass("exercicios-castelo")) {
+        icon = "assets/cardio.png";
+        currentTask = castleTasks.get(exercicio);
+    } else if (selectedElement.parent().hasClass("exercicios-quinta")) {
+        icon = "assets/forca.png";
+        currentTask = farmTasks.get(exercicio);
+    } else if (selectedElement.parent().hasClass("exercicios-mercado")) {
+        icon = "assets/flexibilidade.png";
+        currentTask = marketTasks.get(exercicio);
+    } else
+        return;
+    creatingRoutine[numeroSequencial - 1] = currentTask;
+    $("#lista-de-exercicios").append(`
+        <tr>
+        <td>${numeroSequencial}</td>
+        <td>${exercicio}</td>
+        <td><img src=${icon} width="25" height="25"></td>
+        <td><button class="btn-close" type="button" aria-label="Close" onclick="removeExerciseFromCreateRoutine(this, ${numeroSequencial})"></button>
+        </tr>
+        <tr>
+        <td><span id="adicionar-exercicio-button" data-bs-toggle="modal" data-bs-target="#adicionar-exercicio-modal"
+        style="cursor: pointer;">
+        <button class="btn btn-outline-info"
+            onclick="">Adicionar tarefa</button>
+    </span></td>
+        </tr>`
+    )
+
+    numeroSequencial++;
+}
+
+function removeAddButton() {
+    console.log($('#adicionar-exercicio-button').parent().remove())
+}
+
+function removeExerciseFromCreateRoutine(element, number) {
+    numeroSequencial--;
+    creatingRoutine.splice(number - 1, 1);
     console.log($(element).parent().parent().remove())
 
 }
