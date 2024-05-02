@@ -465,8 +465,8 @@ function startAttack() {
         $(".flex-loot").html(currentLoot[3]);
         const toast = new bootstrap.Toast($("#start-attack-toast"));
         toast.show();
-
         openBlock(0);
+        startTimer(1);
     }
 }
 
