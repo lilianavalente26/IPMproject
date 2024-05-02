@@ -49,23 +49,9 @@ body {
 }
 
 .screen-title {
+    margin-top: 3%;
+    font-family: "Showcard Gothic";
     text-align: center;
-}
-
-#list-rotina {
-    margin-left: 25%;
-}
-
-#secondary-action {
-    margin-top: 7%;
-}
-
-#bonus-column {
-    padding: 7%;
-}
-
-#task-column {
-    padding: 7%;
 }
 
 #recruitment-column-1 {
@@ -74,10 +60,6 @@ body {
 
 #recruitment-column-2 {
     padding: 3% 10% 3% 2%;
-}
-
-#start-column {
-    padding: 7%;
 }
 
 .centered-button {
@@ -104,10 +86,61 @@ body {
     animation-name: lackFunds;
     animation-duration: 1s;
 }
+.recruited{
+    animation-name: recruited;
+    animation-duration: 1.5s;
+}
+
+.image-container{
+    position: relative;
+}
+.information-icon-container{
+    position: absolute;
+    top: -10px;
+    left: 70%;
+    width: 30%;
+    height: 30%;
+}
+.card-information-icon-container{
+    position: absolute;
+    width: 20%;
+    height: 30%;
+}
+
+.return-button {
+    position: relative;
+    top:50%;
+    left:25%;
+}
+
+.lanceNr, .archeNr {
+    font-family: "Showcard Gothic";
+}
+
+#clocks {
+    font-size: xx-small;
+}
+
+.gold-display label{
+    font-size: small;
+}
+
+.difficulty-prize {
+    margin-left: 5%;
+}
+
 @keyframes lackFunds {
     0%   {color: black;}
     25%  {color: red; font-size: 1.2rem;}
     50%  {color: black; font-size: 1rem;}
     75%  {color: red;font-size: 1.2rem;}
+    100% {color: black; font-size: 1rem;}
+  }
+
+@keyframes recruited {
+    0%   {color: black;}
+    25%  {color: green; font-size: 1.2rem;}
+    50%  {color: black; font-size: 1rem;}
+    75%  {color: green;font-size: 1.2rem;}
     100% {color: black; font-size: 1rem;}
   }

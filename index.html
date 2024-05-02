@@ -20,28 +20,27 @@
     <!-- HEADER -- RECURSOS -->
     <!-- HEADER -- RECURSOS -->
     <div class="resources-div" id="resources">
-        <div class="container-fluid">
+        <div class="container-fluid bg-dark bg-gradient text-light">
             <div class="row">
-                <div class="resource-display col-1">
+                <div class="gold-display col-2">
                     <img src="assets\ouro.png" class="resource">
                     <label id="gold"></label>
                 </div>
-                <div class="resource-display col-1">
+                <div class="resource-display col-2" style="text-align: center;">
                     <img src="assets\cardio.png" class="resource">
                     <label id="heart"></label>
                 </div>
-                <div class="resource-display col-1">
+                <div class="resource-display col-2" style="text-align: center;">
                     <img src="assets\forca.png" class="resource">
                     <label id="str"></label>
                 </div>
-                <div class="resource-display col-1">
+                <div class="resource-display col-2" style="text-align: center;">
                     <img src="assets\flexibilidade.png" class="resource">
                     <label id="flex"></label>
                 </div>
-                <div class="resource-display col-1"></div>
-                <div class="resource-display col-3" id="clocks"></div>
-                <div class="config col-4">
-                    <img src="assets\config.png" style="cursor:pointer" width="50" height="50">
+                <div class="col-2 rounded" id="clocks"></div>
+                <div class="config col-2" data-bs-toggle="modal" data-bs-target="#definicoes">
+                    <img src="assets\config-color-swap.png" style="cursor:pointer" width="50" height="50">
                 </div>
             </div>
         </div>
@@ -51,7 +50,6 @@
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
             <div class="toast" id="start-attack-toast" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
-                    <img src="..." class="rounded me-2" alt="...">
                     <strong class="me-auto">Ataque iniciado</strong>
                     <small>Agora mesmo</small>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -60,50 +58,28 @@
                     Iniciado ataque à Aldeia-Mãe. As tropas retornarão em 1 minuto.
                 </div>
             </div>
-            <div class="toast" id="lanceiro-recrutado-toast" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                    <img src="..." class="rounded me-2" alt="...">
-                    <strong class="me-auto">Lanceiro</strong>
-                    <small>Agora mesmo</small>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    Recrutado 1 Lanceiro para as tropas da Aldeia.
-                </div>
-            </div>
-            <div class="toast" id="arqueiro-recrutado-toast" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                    <img src="..." class="rounded me-2" alt="...">
-                    <strong class="me-auto">Arqueiro</strong>
-                    <small>Agora mesmo</small>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body">
-                    Recrutado 1 Arqueiro para as tropas da Aldeia.
-                </div>
-            </div>
         </div>
 
-        <!-- MODAL -->
+        <!-- MODAL FIM DO ATAQUE-->
 
-        <div class="modal fade" id="attack-finished" tabindex="-1" aria-labelledby="staticBackdropLabel"
+        <div class="modal fade" id="attack-finished" tabindex="-1" aria-labelledby="fim-de-ataque-header"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header bg-success">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Vitória!</h1>
+                        <h1 class="modal-title fs-5" id="fim-de-ataque-header">Vitória!</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-6 screen-title" style="border-right: solid;">
+                            <div class="col-6" style="border-right: solid; text-align: center;">
                                 <img src="assets/congratulations-icon.png" width="100" height="100">
                             </div>
                             <div class="col-6">
-                                <h3 class="screen-title">Saque final:</h3>
+                                <h3 style="text-align: center;">Saque final:</h3>
                                 <div class="row">
-                                    <div class="resource-display col-6">
+                                    <div class="gold-display col-6">
                                         <img src="assets\ouro.png" class="resource">
                                         <label class="gold-loot"></label>
                                     </div>
@@ -134,6 +110,75 @@
             </div>
         </div>
         <!-- Modal end-->
+        <!-- MODAL DEFINICOES-->
+
+        <div class="modal fade" id="definicoes" tabindex="-1" aria-labelledby="definicoes-header" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="definicoes-header">Definições</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <label for="nomeDaAldeia" class="form-label">Escolha um Nome para a sua Aldeia:</label>
+                            <input class="form-control" id="nomeDaAldeia" type="text" placeholder=""
+                                aria-label="default input example">
+                        </div>
+                        <div class="container-fluid">
+                            <label for="music-volume" class="form-label" id="volume-da-musica">Volume da música:
+                                50</label>
+                            <input type="range" class="form-range" onchange="updateMusicVolume()" min="0" max="100"
+                                value="50" id="music-volume">
+                        </div>
+                        <div class="container-fluid">
+                            <div class="accordion" id="referencias-icons">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="refs">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#refs-table" aria-expanded="true" aria-controls="refs-table"
+                                            style="font-size: small;">
+                                            Referências das imagens utilizadas:
+                                        </button>
+                                    </h2>
+                                    <div id="refs-table" class="accordion-collapse collapse" aria-labelledby="refs"
+                                        data-bs-parent="#referencias-icons">
+                                        <div class="accordion-body">
+                                            <table class="table table-striped">
+                                                <tr>
+                                                    <td><a href="https://www.flaticon.com/free-icons/start-button"
+                                                            title="start button icons">Start button by Freepik</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="https://www.flaticon.com/free-icons/village"
+                                                            title="village icons">Village by Freepik</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="https://www.flaticon.com/free-icons/next-level"
+                                                            title="next level icons">Next level by IconBaandar</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><a href="https://www.flaticon.com/br/icones-gratis/proximo"
+                                                            title="proximo ícones">Proximo ícones by Smashicons -
+                                                            Flaticon</a></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="confirmChanges()" data-bs-dismiss="modal"
+                            aria-label="Close">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal end-->
     </div>
 
 
@@ -143,54 +188,110 @@
 
 
     <div class="mainBlock" id="aldeia">
-        <h1 class="screen-title">Aldeia.</h1>
+        <h1 class="screen-title nome-da-aldeia"></h1>
         <div class="container-fluid">
             <div class=row>
-                <div class="feature-box col-sm-3 offset-sm-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                    data-bs-title="Quinta"
-                    data-bs-content="Onde trabalham Agricultores. Quem aqui labuta ganha força. <<POR IMPLEMENTAR>>"
-                    id="quinta-icon">
-                    <img class="main-screen-icon" src="assets\quinta-legendada.png" onclick="openBlock(0)"
-                        style="cursor:pointer">
+                <div class="feature-box col-lg-3 offset-lg-2 col-6" id="quinta-icon">
+                    <div class="image-container">
+                        <img class="main-screen-icon" src="assets\quinta-legendada.png" onclick="openBlock(0)"
+                            style="cursor:pointer">
+                        <a tabindex="0" class="information-icon-container" data-bs-toggle="popover"
+                            data-bs-trigger="focus" data-bs-title="Quinta"
+                            data-bs-content="Onde trabalham Agricultores. Quem aqui labuta ganha força. <<POR IMPLEMENTAR>>">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-info-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path
+                                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <div class="feature-box col-sm-3 offset-sm-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                    data-bs-title="Território"
-                    data-bs-content="Aldeias vizinhas são fonte de recursos e preocupação. Que estarão os outros nobres a fazer agora?"
-                    id="territorio-icon" data-bs-placement="left">
-                    <img class="main-screen-icon" src="assets\territorio-legendado.png" onclick="openBlock(3)"
-                        style="cursor:pointer">
+                <div class="feature-box col-lg-3 offset-lg-2 col-6" id="territorio-icon" data-bs-placement="left">
+                    <div class="image-container">
+                        <img class="main-screen-icon" src="assets\territorio-legendado.png" onclick="openBlock(3)"
+                            style="cursor:pointer">
+                        <a tabindex="0" class="information-icon-container" data-bs-toggle="popover"
+                            data-bs-trigger="focus" data-bs-title="Território"
+                            data-bs-content="Aldeias vizinhas são fonte de recursos e preocupação. Que estarão os outros nobres a fazer agora?">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-info-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path
+                                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div class="feature-box col-sm-3 offset-sm-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                    data-bs-title="Castelo"
-                    data-bs-content="Onde se treinam as Tropas. Os jovens precisam de um coração forte para defender a aldeia."
-                    id="castelo-icon">
-                    <img class="main-screen-icon" src="assets\castelo-legendado.png" onclick="openBlock(2)"
-                        style="cursor:pointer">
+                <div class="feature-box col-lg-3 offset-lg-2 col-6" id="castelo-icon">
+                    <div class="image-container">
+                        <img class="main-screen-icon" src="assets\castelo-legendado.png" onclick="openBlock(2)"
+                            style="cursor:pointer">
+                        <a tabindex="0" class="information-icon-container" data-bs-toggle="popover"
+                            data-bs-trigger="focus" data-bs-title="Castelo"
+                            data-bs-content="Onde se treinam as Tropas. Os jovens precisam de um coração forte para defender a aldeia.">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-info-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path
+                                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <div class="feature-box col-sm-3 offset-sm-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                    data-bs-title="Mercado"
-                    data-bs-content="Onde os Mercadores fazem os seus negócios. Um bom mercador é ágil e flexível. <<POR IMPLEMENTAR>>"
-                    id="mercado-icon" data-bs-placement="left">
-                    <img class="main-screen-icon" src="assets\mercado-legendado.png" onclick="openBlock(0)"
-                        style="cursor:pointer">
+                <div class="feature-box col-lg-3 offset-lg-2 col-6">
+                    <div class="image-container">
+                        <img class="main-screen-icon" src="assets\mercado-legendado.png" onclick="openBlock(0)"
+                            style="cursor:pointer">
+                        <a tabindex="0" class="information-icon-container" data-bs-toggle="popover"
+                            data-bs-trigger="focus" data-bs-title="Mercado"
+                            data-bs-content="Onde os Mercadores fazem os seus negócios. Um bom mercador é ágil e flexível. <<POR IMPLEMENTAR>>"
+                            id="mercado-icon" data-bs-placement="left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-info-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path
+                                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div class="feature-box col-sm-3 offset-sm-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                    data-bs-title="População"
-                    data-bs-content="Numa aldeia, cada um tem um papel importante a desempenhar. O que é mais importante agora? <<POR IMPLEMENTAR>>"
-                    id="populacao-icon">
-                    <img class="main-screen-icon" src="assets\populacao-legendada.png" onclick="openBlock(0)"
-                        style="cursor:pointer">
+                <div class="feature-box col-lg-3 offset-lg-2 col-6" id="populacao-icon">
+                    <div class="image-container">
+                        <img class="main-screen-icon" src="assets\populacao-legendada.png" onclick="openBlock(0)"
+                            style="cursor:pointer">
+                        <a tabindex="0" class="information-icon-container" data-bs-toggle="popover"
+                            data-bs-trigger="focus" data-bs-title="População"
+                            data-bs-content="Numa aldeia, cada um tem um papel importante a desempenhar. O que é mais importante agora? <<POR IMPLEMENTAR>>">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-info-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path
+                                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <div class="feature-box col-sm-3 offset-sm-2" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                    data-bs-title="Centro da Aldeia"
-                    data-bs-content="É o dever de um líder ouvir os seus súbditos. Aqui são expostas tarefas a fazer, e podem-se definir rotinas para as realizar. Ao trabalho!"
-                    id="centro-icon" data-bs-placement="left">
-                    <img class="main-screen-icon" src="assets\centro-legendado.png" onclick="openBlock(1)"
-                        style="cursor:pointer">
+                <div class="feature-box col-lg-3 offset-lg-2 col-6" id="centro-icon" data-bs-placement="left">
+                    <div class="image-container">
+                        <img class="main-screen-icon" src="assets\centro-legendado.png" onclick="openBlock(1)"
+                            style="cursor:pointer">
+                        <a tabindex="0" class="information-icon-container" data-bs-toggle="popover"
+                            data-bs-trigger="focus" data-bs-title="Centro da Aldeia"
+                            data-bs-content="É o dever de um líder ouvir os seus súbditos. Aqui são expostas tarefas a fazer, e podem-se definir rotinas para as realizar. Ao trabalho!"
+                            data-bs-placement="left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-info-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path
+                                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -203,61 +304,59 @@
 
 
     <div class="mainBlock" id="centro">
-        <h1 class="screen-title">Centro da Aldeia.</h1>
-        <div class="container-fluid" id="list-rotina">
-            <select class="form-select form-select-lg w-50 p-3" id="select-rotina">
-                <option value="" selected disabled onclick="updatePrize(0)">Selecione uma Rotina</option>
-                <option onclick="updatePrize(this)">Rotina Básica</option>
-            </select>
-        </div>
-        <div class="row">
-            <div class="col-lg-1 col-md-1"></div>
-            <div class="col-lg-5 col-md-5" id="bonus-column">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Prémio total:</h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="resource-display col-6">
-                                <img src="assets\ouro.png" class="resource">
-                                <label class="gold-prize">0</label>
-                            </div>
-                            <div class="resource-display col-6">
-                                <img src="assets\cardio.png" class="resource">
-                                <label class="heart-prize">0</label>
-                            </div>
+        <h1 class="screen-title">Centro da Aldeia</h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 col-12" id="list-rotina">
+                    <select class="form-select form-select-lg" id="select-rotina">
+                        <option value="" selected disabled>Selecione uma Rotina</option>
+                        <option value="Rotina Básica">Rotina Básica</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-12" style="padding: 7%;">
+                    <div class="card">
+                        <div class="card-header" style="text-align: center;">
+                            <h3>Prémio base:</h3>
                         </div>
-                        <div class="row">
-                            <div class="resource-display col-6">
-                                <img src="assets\forca.png" class="resource">
-                                <label class="str-prize">0</label>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="gold-display col-6">
+                                    <img src="assets\ouro.png" class="resource">
+                                    <label class="gold-prize">0</label>
+                                </div>
+                                <div class="resource-display col-6">
+                                    <img src="assets\cardio.png" class="resource">
+                                    <label class="heart-prize">0</label>
+                                </div>
                             </div>
-                            <div class="resource-display col-6">
-                                <img src="assets\flexibilidade.png" class="resource">
-                                <label class="flex-prize">0</label>
+                            <div class="row">
+                                <div class="resource-display col-6">
+                                    <img src="assets\forca.png" class="resource">
+                                    <label class="str-prize">0</label>
+                                </div>
+                                <div class="resource-display col-6">
+                                    <img src="assets\flexibilidade.png" class="resource">
+                                    <label class="flex-prize">0</label>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 col-md-5" id="start-column">
-                <div class="row">
-                    <div class="col-12">
-                        <img src="assets\start-button.png" onclick="openBlock(5)" style="cursor:pointer" width="100"
-                            height="100">
-                        <label>Escolher rotina</label>
-                    </div>
+            <div class="row">
+                <div class="col-lg-4 col-6" style="text-align: center;">
+                    <img src="assets\write.png" id="nova-rotina" onclick="openBlock(6)" style="cursor: pointer;"
+                        width="50" height="50">
+                    <label for="nova-rotina">Criar nova rotina</label>
                 </div>
-                <div class="row" id="secondary-action">
-                    <div class="col-12">
-                        <img src="assets\write.png" onclick="openBlock(6)" style="cursor: pointer;" width="50"
-                            height="50">
-                        <label>Criar nova rotina</label>
-                    </div>
+                <div class="col-lg-4 col-6" style="text-align: center;">
+                    <img src="assets\proximo-colorido.png" id="escolher-rotina" onclick="openBlock(5)"
+                        style="pointer-events: none; filter: grayscale(70%); -webkit-filter: grayscale(70%);"
+                        width="100" height="100">
                 </div>
             </div>
-            <div class="col-lg-1 col-md-1"></div>
         </div>
     </div>
 
@@ -269,20 +368,20 @@
 
     <div class="mainBlock" id="castelo">
         <!-- Modal -->
-        <div class="modal fade" id="desenvolver-castelo-popup" tabindex="-1" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="desenvolver-castelo-popup" tabindex="-1" aria-labelledby="desenvolver-o-castelo"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Desenvolver o Castelo?</h1>
+                        <h1 class="modal-title fs-5" id="desenvolver-o-castelo">Desenvolver o Castelo?</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-6" style="border-right: solid;">
-                                <h3 class="screen-title">Custo:</h3>
+                                <h3 style="text-align: center;">Custo:</h3>
                                 <div class="row">
-                                    <div class="resource-display col-6">
+                                    <div class="gold-display col-6">
                                         <img src="assets\ouro.png" class="resource">
                                         <label id="gold-cost">5000</label>
                                     </div>
@@ -303,7 +402,7 @@
                                 </div>
                             </div>
                             <div class="col-6">
-                                <h3 class="screen-title">Novas Tarefas:</h3>
+                                <h3 style="text-align: center;">Novas Tarefas:</h3>
                                 <ul class="list-group">
                                     <li class="list-group-item">Jumping Jacks II</li>
                                     <li class="list-group-item">Mountain Climbers II</li>
@@ -320,33 +419,31 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col-1" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Desenvolver o castelo">
+        <div class="row" style="padding: 2% 5%; margin-bottom: 0;">
+            <div class="col-3" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Desenvolver o castelo">
                 <span style="cursor:pointer" onclick="checkPopup('#botao-desenvolver', 5000, 20, 5, 5)"
                     data-bs-toggle="modal" data-bs-target="#desenvolver-castelo-popup"><img
                         src="assets/castelo-upgrade.png" width="60" height="60"></span>
             </div>
-            <div class="col-2">
-                <h1 class="screen-title"> Castelo.</h1>
+            <div class="col-6">
+                <h1 class="screen-title" style="position: relative; top:25%;">Castelo</h1>
             </div>
-            <div class="col-1">
-                <span><img src="assets/cardio.png" width="30" height="30"></span>
+            <div class="col-3">
+                <span style="position: relative; top:30%;left:25%;"><img src="assets/cardio.png" width="30"
+                        height="30"></span>
             </div>
-            <div class="col-4"></div>
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col"></div>
-                <div class="col-6">
-                    <table class="quest-table table">
+                <div class="col-12">
+                    <table class="quest-table table" style="margin-bottom: 0;">
                         <thead>
                             <tr>
                                 <th scope="col">Missão</th>
                                 <th scope="col">Recompensa</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="font-size: small;">
                             <tr>
                                 <td>Fazer Mountain Climbers I - 1/4 <br>
                                     <div class="progress">
@@ -359,95 +456,137 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col"></div>
             </div>
         </div>
-        <div class="container-fluid">
-            <br>
-            <h2 class="centered-button">Recrutar</h2>
-            <div class="row">
-                <div class="col-lg-1 col-md-1"></div>
-                <div class="col-lg-5 col-md-5" id="recruitment-column-1">
-                    <div class="card">
-                        <div class="card-header">
-                            <h2>Lanceiro:</h2>
+        <div class="container-fluid" style="margin-top:0;">
+            <h4 class="centered-button">Recrutar</h4>
+            <div id="tropas-carousel" class="carousel carousel-dark slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#tropas-carousel" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#tropas-carousel" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="card" style="margin: auto 10% 5%">
+                            <div class="card-header">
+                                <a tabindex="0" class="card-information-icon-container lanceiro-info" style="padding:0"
+                                    data-bs-toggle="popover" data-bs-html="true" data-bs-trigger="focus"
+                                    data-bs-title="Tropa: Lanceiro"
+                                    data-bs-content='Tropas dedicadas ao ataque e à defesa. Estatísticas= Ataque: 2, Defesa: 2, Fraqueza: ARQUEIRO. Saque transportado: 20<img src="assets\ouro.png" class="resource">'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                                    </svg>
+                                </a>
+                                <div class="row">
+                                    <div class="col-9" style="text-align: center;">
+                                        <h5 style="margin-bottom: 0;">Lanceiro:</h5>
+                                    </div>
+                                    <div class="col-3">
+                                        <h5 class="lanceNr" id="numero-de-lanceiros" style="margin-bottom: 0;">0</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row" style="text-align: center;">
+                                    <div class="gold-display col-6">
+                                        <img src="assets\ouro.png" class="resource">
+                                        <label>100</label>
+                                    </div>
+                                    <div class="resource-display col-6">
+                                        <img src="assets\cardio.png" class="resource">
+                                        <label>2</label>
+                                    </div>
+                                </div>
+                                <div class="row" style="text-align: center;">
+                                    <div class="resource-display col-6">
+                                        <img src="assets\forca.png" class="resource">
+                                        <label>1</label>
+                                    </div>
+                                    <div class="resource-display col-6">
+                                        <img src="assets\flexibilidade.png" class="resource">
+                                        <label>0</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <button type="button" class="btn btn-dark" onclick="addTroop(0)"> Recrutar </button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="resource-display col-12">
-                                    <h2 class="lanceNr">0</h2>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card" style="margin: auto 10% 5%">
+                            <div class="card-header">
+                                <a tabindex="0" class="card-information-icon-container arqueiro-info"
+                                    data-bs-toggle="popover" style="padding:0" data-bs-html="true"
+                                    data-bs-trigger="focus" data-bs-title="Tropa: Arqueiro"
+                                    data-bs-content='Tropas dedicadas à defesa. Estatísticas= Ataque: 1, Defesa: 3 Fraqueza: CAVALARIA. Saque transportado: 1<img src="assets\flexibilidade.png" class="resource">'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-info-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path
+                                            d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                                    </svg>
+                                </a>
+                                <div class="row">
+                                    <div class="col-9" style="text-align: center;">
+                                        <h5 style="margin-bottom: 0;">Arqueiro:</h5>
+                                    </div>
+                                    <div class="col-3">
+                                        <h5 class="archeNr" id="numero-de-arqueiros" style="margin-bottom: 0;">0</h5>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="resource-display col-6">
-                                    <img src="assets\ouro.png" class="resource">
-                                    <label>100</label>
+                            <div class="card-body">
+                                <div class="row" style="text-align: center;">
+                                    <div class="gold-display col-6">
+                                        <img src="assets\ouro.png" class="resource">
+                                        <label>150</label>
+                                    </div>
+                                    <div class="resource-display col-6">
+                                        <img src="assets\cardio.png" class="resource">
+                                        <label>2</label>
+                                    </div>
                                 </div>
-                                <div class="resource-display col-6">
-                                    <img src="assets\cardio.png" class="resource">
-                                    <label>2</label>
+                                <div class="row" style="text-align: center;">
+                                    <div class="resource-display col-6">
+                                        <img src="assets\forca.png" class="resource">
+                                        <label>2</label>
+                                    </div>
+                                    <div class="resource-display col-6">
+                                        <img src="assets\flexibilidade.png" class="resource">
+                                        <label>2</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="resource-display col-6">
-                                    <img src="assets\forca.png" class="resource">
-                                    <label>1</label>
+                                <div class="row">
+                                    <button type="button" class="btn btn-dark" onclick="addTroop(1)"> Recrutar </button>
                                 </div>
-                                <div class="resource-display col-6">
-                                    <img src="assets\flexibilidade.png" class="resource">
-                                    <label>0</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <button type="button" class="btn btn-dark" onclick="addTroop(0)"> Recrutar </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5 col-md-5" id="recruitment-column-2">
-                    <div class="card">
-                        <div class="card-header">
-                            <h2>Arqueiro:</h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="resource-display col-12">
-                                    <h2 class="archeNr">0</h2>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="resource-display col-6">
-                                    <img src="assets\ouro.png" class="resource">
-                                    <label>150</label>
-                                </div>
-                                <div class="resource-display col-6">
-                                    <img src="assets\cardio.png" class="resource">
-                                    <label>2</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="resource-display col-6">
-                                    <img src="assets\forca.png" class="resource">
-                                    <label>2</label>
-                                </div>
-                                <div class="resource-display col-6">
-                                    <img src="assets\flexibilidade.png" class="resource">
-                                    <label>2</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <button type="button" class="btn btn-dark" onclick="addTroop(1)"> Recrutar </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-1 col-md-1"></div>
-            </div>
-            <div class="centered-button container-fluid">
-                <img src="assets/compass.png" onclick="openBlock(3)" style="cursor:pointer" width="100" height="100">
-                <br><label>Preparar Ataque</label>
+                <button class="carousel-control-prev" type="button" data-bs-target="#tropas-carousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#tropas-carousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
+        <div class="centered-button container-fluid">
+            <img src="assets/compass.png" id="preparar-ataque-button" onclick="openBlock(3)" style="cursor:pointer"
+                width="60" height="60">
+            <label for="preparar-ataque-button">Preparar Ataque</label>
+        </div>
+    </div>
     </div>
 
     <!-- MAIN BLOCK -- TERRITORIO -->
@@ -456,36 +595,140 @@
 
 
     <div class="mainBlock" id="territorio">
-        <h1 class="screen-title">Território.</h1>
+        <h1 class="screen-title">Território</h1>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-6"></div>
                 <div class="col-6">
-                    <img src="assets\aldeias.png" width="100" height="100"><br>
+                    <div class="btn-group dropstart" role="group">
+                        <button type="button" class="btn btn-outline-success rounded" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="assets\aldeias.png" width="100" height="100">
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button type="button" class="btn dropdown-item" onclick="openBlock(4)">Atacar</button></li>
+                            <li><a class="dropdown-item" href="#">Enviar Mercador</a></li>
+                        </ul>
+                    </div>
                     <label>Primopolis</label>
                 </div>
             </div>
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col">
-                    <img src="assets\aldeias2.png" onclick="openBlock(4)" style="cursor:pointer" width="100"
-                        height="100"><br>
+                    <div class="btn-group dropend" role="group">
+                        <button type="button" class="btn btn-outline-success rounded" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="assets\aldeias2.png" width="100" height="100">
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button type="button" class="btn dropdown-item" onclick="openBlock(4)">Atacar</button></li>
+                            <li><a class="dropdown-item" href="#">Enviar Mercador</a></li>
+                        </ul>
+                    </div>
                     <label>Aldeia-mãe</label>
                 </div>
                 <div class="col-6"></div>
             </div>
             <div class="row">
-                <div class="col-3"></div>
+                <div class="col-2"></div>
                 <div class="col">
-                    <img src="assets\aldeias3.png" width="100" height="100"><br>
-                    <label>Tio Ville</label>
+                    <div class="btn-group dropup" role="group">
+                        <button type="button" class="btn btn-outline-success rounded" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="assets\aldeias3.png" width="100" height="100">
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button type="button" class="btn dropdown-item" onclick="openBlock(4)">Atacar</button></li>
+                            <li><a class="dropdown-item" href="#">Enviar Mercador</a></li>
+                        </ul>
+                    </div>
+                    <br><label>Tio Ville</label>
                 </div>
                 <div class="col">
-                    <img src="assets\aldeias4.png" width="100" height="100"><br>
-                    <label>Irmãodade</label>
+                    <div class="btn-group dropup" role="group">
+                        <button type="button" class="btn btn-outline-success rounded" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="assets\aldeias4.png" width="100" height="100">
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button type="button" class="btn dropdown-item" onclick="openBlock(4)">Atacar</button></li>
+                            <li><a class="dropdown-item" href="#">Enviar Mercador</a></li>
+                        </ul>
+                    </div>
+                    <br><label>Irmãodade</label>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- MAIN BLOCK -- TERRITORIO VAZIO -->
+    <!-- MAIN BLOCK -- TERRITORIO VAZIO -->
+    <!-- MAIN BLOCK -- TERRITORIO VAZIO -->
+    <div class="mainBlock" id="territorio-vazio">
+        <!-- Modal -->
+        <div class="modal fade" id="generate-code" tabindex="-1" aria-labelledby="comece-o-seu-territorio"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="comece-o-seu-territorio">Comece o seu território</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="generated-self-code" class="form-label">Partilhe este código com amigos</label>
+                        <div class="input-group mb-3">
+                            <input class="form-control user-select-all" id="generated-self-code" type="text" value=""
+                                aria-label="readonly input example" readonly>
+                            <button class="btn btn-outline-secondary" onclick="copyToClipboard()"
+                                data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Copiar"
+                                type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-clipboard" viewBox="0 0 16 16">
+                                    <path
+                                        d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z" />
+                                    <path
+                                        d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z" />
+                                </svg></button>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                            aria-label="Close">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="screen-title">Território</h1>
+
+
+        <div class="container-fluid">
+            <div class="row">
+                <h2 style="text-align: center;">Junte-se a um território existente:</h2>
+            </div>
+            <div class="row">
+                <div class="input-group mb-3">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="codigo-territorio" placeholder="codigo">
+                        <label for="codigo-territorio">código do território</label>
+                    </div>
+                    <button class="btn btn-dark" onclick="joinTerritory()">Juntar</button>
+                </div>
+                <div id="alerta-territorio-inexistente"></div>
+            </div>
+        </div>
+        <div class="container-fluid" style="margin-top: 10%;">
+            <div class="row">
+                <h4 style="text-align: center;">Ou comece o seu próprio território</h4>
+                <div class="col-4"></div>
+                <button class="btn btn-dark col-4" data-bs-toggle="modal" data-bs-target="#generate-code" type="submit"
+                    onclick="generateTerritoryCode()">Gerar código</button>
+                <div class="col-4"></div>
+            </div>
+        </div>
+
+
     </div>
 
 
@@ -496,24 +739,24 @@
 
     <div class="mainBlock" id="iniciar-rotina">
         <!-- Modal -->
-        <div class="modal fade" id="congratulations" tabindex="-1" aria-labelledby="staticBackdropLabel"
+        <div class="modal fade" id="congratulations" tabindex="-1" aria-labelledby="fim-de-rotina-header"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header bg-success">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Parabéns!</h1>
+                        <h1 class="modal-title fs-5" id="fim-de-rotina-header">Parabéns!</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-6 screen-title" style="border-right: solid;">
+                            <div class="col-6" style="border-right: solid; text-align: center;">
                                 <img src="assets/congratulations-icon.png" width="100" height="100">
                             </div>
                             <div class="col-6">
-                                <h3 class="screen-title">Prémio final:</h3>
+                                <h3 style="text-align: center;">Prémio final:</h3>
                                 <div class="row">
-                                    <div class="resource-display col-6">
+                                    <div class="gold-display col-6">
                                         <img src="assets\ouro.png" class="resource">
                                         <label class="gold-prize"></label>
                                     </div>
@@ -548,110 +791,79 @@
 
         <h1 class="screen-title">ROTINA</h1>
         <div class="container-fluid">
-            <h2 class="screen-title"> Selecionar Dificuldade</h2>
+            <h2 style="text-align: center;"> Selecionar Dificuldade</h2>
             <div class="row">
-                <div class="col-4"></div>
-                <div class="screen-title col-4">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" onchange="updateDifficulty(1)" type="checkbox" id="dif1">
-                        <label class="form-check-label" for="dif1">+5 Segundos por exercício <span
-                                class="difficulty-prize" id="gold-routine-bonus"> +100 <img src="assets\ouro.png"
-                                    class="resource"></span></label>
+                <div class="col-6">
+                    <div class="form-check form-switch border border-dark rounded">
+                        <input class="form-check-input" onchange="updateDifficulty(0)" type="checkbox" id="dif0">
+                        <label class="form-check-label" for="dif0" style="font-size: small; width: 100%;">+5 Segundos
+                            por exercício <span class="difficulty-prize" id="gold-routine-bonus"> +100 <img
+                                    src="assets\ouro.png" class="resource"></span></label>
                     </div>
-                    <div class="form-check form-switch">
+                    <div class="form-check form-switch border border-dark rounded">
                         <input class="form-check-input" onchange="updateDifficulty(2)" type="checkbox" id="dif2">
-                        <label class="form-check-label" for="dif2">+5 Segundos por exercício <span
-                                class="difficulty-prize" id="cardio-routine-bonus"> +1 <img src="assets\cardio.png"
-                                    class="resource"></span></label>
+                        <label class="form-check-label" for="dif2" style="font-size: small; width: 100%;">-5 Segundos de
+                            descanso <span class="difficulty-prize" id="str-routine-bonus"> +1 <img
+                                    src="assets\forca.png" class="resource"></span></label>
                     </div>
-                    <div class="form-check form-switch">
+                </div>
+                <div class="col-6">
+                    <div class="form-check form-switch border border-dark rounded">
+                        <label class="form-check-label" for="dif1" style="font-size: small; width: 100%;">+5 Segundos
+                            por exercício <span class="difficulty-prize" id="cardio-routine-bonus"> +1 <img
+                                    src="assets\cardio.png" class="resource"></span></label>
+                        <input class="form-check-input" onchange="updateDifficulty(1)" type="checkbox" id="dif1">
+                    </div>
+                    <div class="form-check form-switch border border-dark rounded">
+                        <label class="form-check-label" for="dif3" style="font-size: small; width: 100%;">-5 Segundos de
+                            descanso <span class="difficulty-prize" id="flex-routine-bonus"> +1 <img
+                                    src="assets\flexibilidade.png" class="resource"></span></label>
                         <input class="form-check-input" onchange="updateDifficulty(3)" type="checkbox" id="dif3">
-                        <label class="form-check-label" for="dif2">-5 Segundos de descanso <span
-                                class="difficulty-prize" id="str-routine-bonus"> +1 <img src="assets\forca.png"
-                                    class="resource"></span></label>
                     </div>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" onchange="updateDifficulty(4)" type="checkbox" id="dif4">
-                        <label class="form-check-label" for="dif2">-5 Segundos de descanso <span
-                                class="difficulty-prize" id="flex-routine-bonus"> +1 <img src="assets\flexibilidade.png"
-                                    class="resource"></span></label>
-                    </div>
-
                 </div>
-                <div class="col-4"></div>
             </div>
-            <div class="row">
-                <div class="col-1"></div>
-                <div class="col-lg-5 col-md-5" id="bonus-column">
-                    <div class="card">
-                        <div class="card-header">
-                            <h2>Prémio total:</h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="resource-display col-6">
-                                    <img src="assets\ouro.png" class="resource">
-                                    <label class="gold-prize"></label>
-                                </div>
-                                <div class="resource-display col-6">
-                                    <img src="assets\cardio.png" class="resource">
-                                    <label class="heart-prize"></label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="resource-display col-6">
-                                    <img src="assets\forca.png" class="resource">
-                                    <label class="str-prize"></label>
-                                </div>
-                                <div class="resource-display col-6">
-                                    <img src="assets\flexibilidade.png" class="resource">
-                                    <label class="flex-prize"></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-5" id="task-column">
+            <div class="row" style="margin-top: 7%;">
+                <div class="col-6" id="task-column">
                     <div class="tabela-exercicios">
-                        <table class="table">
+                        <table class="table table-striped">
                             <thead class="fixed-header">
                                 <th>Tarefas:</th>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Jumping Jacks I</td>
-                                </tr>
-                                <tr>
-                                    <td>Flexões I</td>
-                                </tr>
-                                <tr>
-                                    <td>Jumping Jacks I</td>
-                                </tr>
-                                <tr>
-                                    <td>Abdominais I</td>
-                                </tr>
-                                <tr>
-                                    <td>Mountain Climbers II</td>
-                                </tr>
-                                <tr>
-                                    <td>Flexões I</td>
-                                </tr>
-                                <tr>
-                                    <td>Flamingo I</td>
-                                </tr>
-                                <tr>
-                                    <td>Tocar os Calcanhares I</td>
-                                </tr>
+                            <tbody id="lista-de-tarefas-da-rotina-selecionada" style="font-size: small;">
                             </tbody>
                         </table>
                     </div>
                 </div>
+                <div class="col-6">
+                    <h5 style="text-align: center;">Prémio total:</h5>
+                    <div class="row">
+                        <div class="gold-display col-6">
+                            <img src="assets\ouro.png" class="resource">
+                            <label class="gold-prize"></label>
+                        </div>
+                        <div class="resource-display col-6">
+                            <img src="assets\cardio.png" class="resource">
+                            <label class="heart-prize"></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="resource-display col-6">
+                            <img src="assets\forca.png" class="resource">
+                            <label class="str-prize"></label>
+                        </div>
+                        <div class="resource-display col-6">
+                            <img src="assets\flexibilidade.png" class="resource">
+                            <label class="flex-prize"></label>
+                        </div>
+                    </div>
+                    <div class="centered-button container-fluid" style="margin-top: 10%;">
+                        <span data-bs-toggle="modal" data-bs-target="#congratulations" style="cursor: pointer;">
+                            <img src="assets/start-button.png" width="100" height="100"></span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="centered-button container-fluid">
-            <span data-bs-toggle="modal" data-bs-target="#congratulations" style="cursor: pointer;">
-                <img src="assets/start-button.png" width="100" height="100"></span>
-        </div>
+
     </div>
 
 
@@ -662,7 +874,7 @@
 
     <div class="mainBlock" id="criar-rotina">
         <!-- Modal -->
-        <div class="modal fade" id="adicionar-exercicio-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="adicionar-exercicio-modal" tabindex="-1" aria-labelledby="add-exercicio-modal-title"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
@@ -744,25 +956,27 @@
             </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="confirmar-nova-rotina" tabindex="-1" aria-labelledby="staticBackdropLabel"
+        <div class="modal fade" id="confirmar-nova-rotina" tabindex="-1" aria-labelledby="confirmar-nova-rotina-header"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header bg-success">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirmar Nova Rotina</h1>
+                        <h1 class="modal-title fs-5" id="confirmar-nova-rotina-header">Confirmar Nova Rotina</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-6 screen-title" style="border-right: solid;">
+                            <div class="col-6" style="border-right: solid; text-align: center;">
                                 <label for="nomeDeRotina" class="form-label">Escolha um Nome para a sua Rotina:</label>
-                                <input class="form-control" id= "nomeDeRotina" type="text" placeholder="<nome da minha rotina>" aria-label="default input example">
+                                <input class="form-control" id="nomeDeRotina" type="text"
+                                    placeholder="<nome da minha rotina>" aria-label="default input example">
+                                <div id="alerta-nome-ja-existente"></div>
                             </div>
                             <div class="col-6">
-                                <h5 class="screen-title">Prémio quando for executada:</h5>
+                                <h5 style="text-align: center;">Prémio quando for executada:</h5>
                                 <div class="row">
-                                    <div class="resource-display col-6">
+                                    <div class="gold-display col-6">
                                         <img src="assets\ouro.png" class="resource">
                                         <label class="gold-prospect-prize"></label>
                                     </div>
@@ -787,29 +1001,28 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
-                        <button type="button" class="btn btn-success"
-                            onclick="confirmNewRoutine(); setTimeout(openBlock(0), 1000)" data-bs-dismiss="modal"
-                            aria-label="Close">Confirmar</button>
+                        <button type="button" class="btn btn-success" id="confirmar-nova-rotina-button"
+                            onclick="confirmNewRoutine()" aria-label="Close">Confirmar</button>
                     </div>
                 </div>
             </div>
         </div>
-
-
         <h1 class="screen-title">Criar Nova Rotina</h1>
         <div class="container-fluid">
-            <h2 class="screen-title"> Selecionar Tarefas:</h2>
+            <h2 style="text-align: center;"> Selecionar Tarefas:</h2>
             <div class="row">
-                <div class="col-3"></div>
-                <div class="screen-title col-6 container-fluid">
+                <div class="col-12 container-fluid" style="text-align: center;">
                     <div class="tabela-exercicios">
                         <table class="table">
                             <thead class="fixed-header">
-                                <th>Tarefas:</th>
+                                <th>#</th>
+                                <th>Tarefa</th>
+                                <th>Tipo</th>
+                                <th> </th>
                             </thead>
                             <tbody id="lista-de-exercicios">
                                 <tr>
-                                    <td><span id="adicionar-exercicio-button" data-bs-toggle="modal"
+                                    <td colspan="4"><span id="adicionar-exercicio-button" data-bs-toggle="modal"
                                             data-bs-target="#adicionar-exercicio-modal" style="cursor: pointer;">
                                             <button class="btn btn-outline-info" onclick="">Adicionar tarefa</button>
                                         </span>
@@ -819,14 +1032,22 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-3"></div>
             </div>
             <div class="row">
-                <div class="col-4"></div>
+                <div class="col-4">
+                    <button type="button" class="btn btn-danger return-button" onclick="openBlock(1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
+                            class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5" />
+                        </svg>
+                    </button>
+                </div>
                 <div class="col-4">
                     <div class="centered-button container-fluid">
-                        <span data-bs-toggle="modal" data-bs-target="#confirmar-nova-rotina" style="cursor: pointer;" onclick="showProspectedPrize()">
-                            <img src="assets/write.png" width="75" height="75"><label>Criar Rotina</label></span>
+                        <span data-bs-toggle="modal" data-bs-target="#confirmar-nova-rotina" style="cursor: pointer;"
+                            onclick="showProspectedPrize()">
+                            <img src="assets/write.png" width="75" height="75"><label>Criar</label></span>
                     </div>
                 </div>
                 <div class="col-4"></div>
@@ -844,119 +1065,100 @@
         <h1 class="screen-title">ATAQUE</h1>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-4"></div>
-                <div class="col-2">
-                    <h2>Alvo:</h2>
+                <div class="col-3">
+                    <h2 style="margin-left: 10%;">Alvo:</h2>
                 </div>
-                <div class="col-2">
-                    <h3 id="target">Aldeia-mãe</h3>
+                <div class="col-6">
+                    <button type="button" class="btn btn-outline-info text-dark" id="target"
+                        style="cursor: default; margin-left: 15%;">Aldeia-mãe</button>
                 </div>
-                <div class="col">
-                    <img src="assets/compass.png" onclick="openBlock(3)" style="cursor:pointer" width="75" height="75">
-                    <br><label>Alterar</label>
+                <div class="col-3" style="text-align: center; margin-top: -5%;">
+                    <img src="assets/compass.png" onclick="openBlock(3)" style="cursor:pointer" width="60" height="60">
+                    <br><label style="font-size: small;">Alterar</label>
                 </div>
             </div>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-6">
-                        <div class="accordion" id="select-tropas">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="select-lanceiro">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Lanceiros
-                                        <div class="select-tropas-range">
-                                            <input type="range" onchange="updateLoot(1)" class="form-range" min="0"
-                                                max="5" id="lanceiros-selecionados">
-                                        </div>
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne" data-bs-parent="#select-tropas">
-                                    <div class="accordion-body">
-                                        Tropas dedicadas ao ataque e à defesa. Estatísticas= Ataque: 2,
-                                        Defesa: 2,
-                                        Fraqueza:
-                                        ARQUEIRO. Saque transportado: 20 <img src="assets\ouro.png" class="resource">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="select-arqueiro">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Arqueiros
-                                        <div class="select-tropas-range">
-                                            <input type="range" onchange="updateLoot(2)" class="form-range" min="0"
-                                                max="5" id="arqueiros-selecionados">
-                                        </div>
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                    data-bs-parent="#select-tropas">
-                                    <div class="accordion-body">
-                                        Tropas dedicadas à defesa. Estatísticas= Ataque: 1, Defesa: 3
-                                        Fraqueza:
-                                        CAVALARIA.
-                                        Saque
-                                        transportado: 1 <img src="assets\flexibilidade.png" class="resource">
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col-10">
+                        <label for="lanceiros-selecionados">Lanceiros</label>
+                        <a tabindex="0" class="btn lanceiro-info" style="padding:0; margin-top: -10%;"
+                            data-bs-toggle="popover" data-bs-html="true" data-bs-trigger="focus"
+                            data-bs-title="Tropa: Lanceiro"
+                            data-bs-content='Tropas dedicadas ao ataque e à defesa. Estatísticas= Ataque: 2, Defesa: 2, Fraqueza: ARQUEIRO. Saque transportado: 20<img src="assets\ouro.png" class="resource">'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-info-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path
+                                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                            </svg>
+                        </a>
+                        <div class="select-tropas-range">
+                            <input type="range" onchange="updateLoot(1)" class="form-range" min="0" max="5"
+                                id="lanceiros-selecionados">
                         </div>
                     </div>
-                    <div class="col-3"></div>
+                    <div class="col-2 d-flex align-items-center">
+                        <span id="lanceiros-valor-selecionado" style="font-family: 'Showcard Gothic';"></span> /
+                        <span class="lanceNr"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-10">
+                        <label for="arqueiros-selecionados">Arqueiros</label>
+                        <a tabindex="0" class="btn arqueiro-info" style="padding:0; margin-top: -10%;"
+                            data-bs-toggle="popover" data-bs-html="true" data-bs-trigger="focus"
+                            data-bs-title="Tropa: Arqueiro" data-bs-content='Tropas dedicadas à defesa. Estatísticas= Ataque: 1, Defesa: 3, Fraqueza: CAVALARIA.
+                            Saque transportado: 1 <img src="assets\flexibilidade.png" class="resource">'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-info-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path
+                                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                            </svg>
+                        </a>
+                        <div class="select-tropas-range">
+                            <input type="range" onchange="updateLoot(2)" class="form-range" min="0" max="5"
+                                id="arqueiros-selecionados">
+                        </div>
+                    </div>
+                    <div class="col-2 d-flex align-items-center">
+                        <span id="arqueiros-valor-selecionado" style="font-family: 'Showcard Gothic';"></span> /
+                        <span class="archeNr"></span>
+                    </div>
                 </div>
             </div>
-
             <div class="row">
-                <div class="col-lg-1 col-md-1"></div>
-                <div class="col-lg-5 col-md-5" id="bonus-column">
-                    <div class="card">
-                        <div class="card-header">
-                            <h2>Saque máximo previsto:</h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="resource-display col-6">
-                                    <img src="assets\ouro.png" class="resource">
-                                    <label class="gold-loot">0</label>
-                                </div>
-                                <div class="resource-display col-6">
-                                    <img src="assets\cardio.png" class="resource">
-                                    <label class="heart-loot">0</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="resource-display col-6">
-                                    <img src="assets\forca.png" class="resource">
-                                    <label class="str-loot">0</label>
-                                </div>
-                                <div class="resource-display col-6">
-                                    <img src="assets\flexibilidade.png" class="resource">
-                                    <label class="flex-loot">0</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5 col-md-5" id="start-column">
+                <div class="col-6" style="padding: 7%;">
+                    <h5 style="text-align: center;">Saque máximo previsto:</h5>
                     <div class="row">
-                        <div class="col-12">
-                            <img src="assets\sword.png" onclick="startAttack(); startTimer(1);" style="cursor: pointer;"
-                                width="100" height="100">
-                            <label>Atacar!</label>
+                        <div class="gold-display col-6">
+                            <img src="assets\ouro.png" class="resource">
+                            <label class="gold-loot"></label>
+                        </div>
+                        <div class="resource-display col-6">
+                            <img src="assets\cardio.png" class="resource">
+                            <label class="heart-loot"></label>
                         </div>
                     </div>
-                    <div id="liveAlertPlaceholder"></div>
+                    <div class="row">
+                        <div class="resource-display col-6">
+                            <img src="assets\forca.png" class="resource">
+                            <label class="str-loot"></label>
+                        </div>
+                        <div class="resource-display col-6">
+                            <img src="assets\flexibilidade.png" class="resource">
+                            <label class="flex-loot"></label>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-1 col-md-1"></div>
+                <div class="col-6" style="padding: 7%; text-align: center;">
+                    <img src="assets\sword.png" onclick="startAttack(); startTimer(1);" style="cursor: pointer;"
+                        width="100" height="100">
+                    <label>Atacar!</label>
+                </div>
+                <div id="alerta-tropas-insuficientes"></div>
             </div>
         </div>
-
-        <br>
-        <br>
     </div>
 
 
@@ -965,33 +1167,24 @@
     <!-- FOOTER -- NAVEGAÇÃO -->
 
 
-    <div class="footer" id="footer-navigation">
-        <div class="container-fluid">
+    <div class="footer fixed-bottom" id="footer-navigation">
+        <div class="container-fluid bg-dark bg-gradient text-light">
             <div class="row">
-                <div class="footer-box col-sm-3 offset-sm-1" data-bs-toggle="tooltip" data-bs-placement="top"
+                <div class="footer-box col-lg-3 offset-lg-1 col-4" data-bs-toggle="tooltip" data-bs-placement="top"
                     data-bs-title="Voltar para a minha aldeia" id="return-to-aldeia" style="cursor: pointer;">
                     <img onclick="openBlock(0)" class="footer-nav-icon" src="assets\aldeia-legendada.png">
                 </div>
-                <div class="footer-box col-sm-3 offset-sm-1">
-                    <button type="button" id="quick-start-icon" onclick="openBlock(5)" class="btn btn-success btn-lg"
+                <div class="footer-box col-lg-3 offset-lg-1 col-4">
+                    <button type="button" id="quick-start-icon" onclick="openBlock(1)" class="btn btn-success btn-lg"
                         data-bs-toggle="tooltip" data-bs-placement="top"
                         data-bs-title="Iniciar a rotina de tarefas preferida <<POR IMPLEMENTAR>>">
                         <img class="footer-nav-icon" src="assets\start-button.png"></button>
                 </div>
-                <div class="footer-box col-sm-3 offset-sm-1" id="lista-de-tarefas">
-                    <img class="footer-nav-icon" src="assets\lista-tarefas.png" data-bs-toggle="tooltip"
+                <div class="footer-box col-lg-3 offset-lg-1 col-4" id="lista-de-tarefas">
+                    <img class="footer-nav-icon" src="assets\lista-tarefas-legendado.png" data-bs-toggle="tooltip"
                         data-bs-placement="top" data-bs-title="Lista de tarefas <<POR IMPLEMENTAR>>"
                         onclick="openBlock(0)" style="cursor:pointer">
                 </div>
-                <br>
-                <br>
-                <a href="https://www.flaticon.com/free-icons/start-button" title="start button icons">Start
-                    button icons
-                    created by Freepik - Flaticon</a>
-                <a href="https://www.flaticon.com/free-icons/village" title="village icons">Village
-                    icons created by Freepik - Flaticon</a>
-                <a href="https://www.flaticon.com/free-icons/next-level" title="next level icons">Next level icons
-                    created by IconBaandar - Flaticon</a>
             </div>
         </div>
 

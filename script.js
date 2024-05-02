@@ -52,6 +52,7 @@ var currentRoutine = [];
 var currentPrize = [0, 0, 0, 0];
 var currentLoot = [0, 0, 0, 0];
 
+var villageName = "Aldeia";
 var gold = startingGold;
 var heart = startingHeart;
 var str = startingIron;
@@ -60,6 +61,10 @@ var lancer = 0;
 var archer = 0;
 var cavalry = 0;
 var upgradedCastle = false;
+var joinedTerritory = false;
+var territoryCode = "6ad6-8220-203c-1c2e-993c";
+
+
 
 // TODO: PADRONIZAR OS VALORES DAS COISAS TODAS NO JAVASCRIPT. O HTML DEVE SER PREENCHIDO SÓ COM ISTO EM TODAS AS OCASIOES.
 // TODO: criar mainblock para lista de tarefas
@@ -80,6 +85,12 @@ $(document).ready(function () {
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
+    $("#select-rotina").change(function() {
+        var selectedRoutine = $('#select-rotina option:selected');
+        updatePrize(selectedRoutine.val());
+    });
+
+    changeVillageName();
     //ENABLE "ALDEIA" AT STARTUP
     $('#aldeia').show();
     upgradedCastle = false;
@@ -110,7 +121,7 @@ function addTaskToList(task) {
             farmTasks.set(task.name, task);
             break;
         default:
-            console.log("Unable to create new task");
+            console.error("Unable to create new task");
             break;
     }
 }
@@ -177,20 +188,15 @@ function calculateBaseRoutinePrize(routineName) {
 
 
 function updateLoot(tropa) {
-
     switch (tropa) {
         case 1:
             var val = parseInt($("#lanceiros-selecionados").val());
+            $("#lanceiros-valor-selecionado").html(val);
             $(".gold-loot").html(val * lancerStats[1]);
-            $(".heart-loot").html(val * lancerStats[2]);
-            $(".str-loot").html(val * lancerStats[3]);
-            $(".flex-loot").html(val * lancerStats[4]);
             break;
         case 2:
             var val = parseInt($("#arqueiros-selecionados").val());
-            $(".gold-loot").html(val * archerStats[1]);
-            $(".heart-loot").html(val * archerStats[2]);
-            $(".str-loot").html(val * archerStats[3]);
+            $("#arqueiros-valor-selecionado").html(val);
             $(".flex-loot").html(val * archerStats[4]);
             break;
         default:
@@ -251,22 +257,34 @@ function upgradeMarket() {
     marketTasks.forEach((value, key) => { showTask(Building.MERCADO, value, key) });
 }
 
+function updateTaskList() {
+    var routineName = $('#select-rotina option:selected').val();
+    var tasks = mapOfRoutines.get(routineName);
+    var targetTable = $("#lista-de-tarefas-da-rotina-selecionada")
+    for (i = 0; i < tasks.length; i++) {
+        currentRoutine[i] = tasks[i];
+        targetTable.append(`<tr><td>${currentRoutine[i].name}</td></tr>`);
+    }
+}
 
-function updatePrize(element) {
-    var routineName = $(element).text();
-    currentPrize = calculateBaseRoutinePrize(routineName);
+function updatePrize(routineName) {
+    if (routineName != 0) {
+        $("#escolher-rotina").attr("style", "cursor: pointer");
 
-    $(".gold-prize").html(currentPrize[0]);
-    $(".heart-prize").html(currentPrize[1]);
-    $(".str-prize").html(currentPrize[2]);
-    $(".flex-prize").html(currentPrize[3]);
+        currentPrize = calculateBaseRoutinePrize(routineName);
+
+        $(".gold-prize").html(currentPrize[0]);
+        $(".heart-prize").html(currentPrize[1]);
+        $(".str-prize").html(currentPrize[2]);
+        $(".flex-prize").html(currentPrize[3]);
+    }
 }
 
 function updateDifficulty(evento) {
 
     switch (evento) {
-        case 1:
-            if ($("#dif1").is(":checked")) {
+        case 0:
+            if ($("#dif0").is(":checked")) {
                 currentPrize[0] += 100;
                 $(".gold-prize").html(currentPrize[0]);
             } else {
@@ -274,8 +292,8 @@ function updateDifficulty(evento) {
                 $(".gold-prize").html(currentPrize[0]);
             }
             break;
-        case 2:
-            if ($("#dif2").is(":checked")) {
+        case 1:
+            if ($("#dif1").is(":checked")) {
                 currentPrize[1] += 1;
                 $(".heart-prize").html(currentPrize[1]);
             } else {
@@ -283,8 +301,8 @@ function updateDifficulty(evento) {
                 $(".heart-prize").html(currentPrize[1]);
             }
             break;
-        case 3:
-            if ($("#dif3").is(":checked")) {
+        case 2:
+            if ($("#dif2").is(":checked")) {
                 currentPrize[2] += 1;
                 $(".str-prize").html(currentPrize[2]);
             } else {
@@ -292,8 +310,8 @@ function updateDifficulty(evento) {
                 $(".str-prize").html(currentPrize[2]);
             }
             break;
-        case 4:
-            if ($("#dif4").is(":checked")) {
+        case 3:
+            if ($("#dif3").is(":checked")) {
                 currentPrize[3] += 1;
                 $(".flex-prize").html(currentPrize[3]);
             } else {
@@ -311,7 +329,6 @@ function updateDifficulty(evento) {
 }
 
 function doRoutine() {
-
     addResource(currentPrize[0], currentPrize[1], currentPrize[2], currentPrize[3]);
     $('input.form-check-input').prop('checked', false);
     currentPrize[0] = 0;
@@ -319,8 +336,6 @@ function doRoutine() {
     currentPrize[2] = 0;
     currentPrize[3] = 0;
     $('#select-rotina option[value="0"]').prop('selected', true);
-    updatePrize(-1);
-
 }
 
 function alertFunds(lackingFunds) {
@@ -328,12 +343,11 @@ function alertFunds(lackingFunds) {
         $(id).addClass('lack-funds');
         setTimeout(function () { $(id).removeClass('lack-funds'); }, 1000);
     });
-
 }
+
 
 function addResource(goldVal, heartVal, strVal, flexVal) {
 
-    // $("label").removeClass('lack-funds');
     if (gold + goldVal < 0 || heart + heartVal < 0 || str + strVal < 0 || flex + flexVal < 0) {
 
         var variables = []
@@ -377,13 +391,17 @@ function openBlock(blockValue) {
             $("#castelo").show();
             break;
         case 3:
-            $("#territorio").show();
+            if (joinedTerritory)
+                $("#territorio").show();
+            else
+                $("#territorio-vazio").show();
             break;
         case 4:
             $("#prep-ataque").show();
             break;
         case 5:
             $('input.form-check-input').prop('checked', false);
+            updateTaskList();
             $("#iniciar-rotina").show();
             $("#quick-start-icon").hide();
             break;
@@ -403,8 +421,8 @@ function addTroop(troopNr) {
                 lancer++;
                 $(".lanceNr").html(lancer);
                 $("#lanceiros-selecionados").attr('max', lancer);
-                const toast = new bootstrap.Toast($("#lanceiro-recrutado-toast"));
-                toast.show()
+                $("#numero-de-lanceiros").addClass('recruited');
+                setTimeout(function () { $(".lanceNr").removeClass('recruited'); }, 1000);
             }
             break;
         case 1:
@@ -412,15 +430,14 @@ function addTroop(troopNr) {
                 archer++;
                 $(".archeNr").html(archer);
                 $("#arqueiros-selecionados").attr('max', archer);
-                const toast = new bootstrap.Toast($("#arqueiro-recrutado-toast"));
-                toast.show()
+                $("#numero-de-arqueiros").addClass('recruited');
+                setTimeout(function () { $(".archeNr").removeClass('recruited'); }, 1000);
             }
             break;
     }
 }
-const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
 
-const alert = (message, type) => {
+const alert = (target, message, type) => {
     const wrapper = document.createElement('div')
     wrapper.innerHTML = [
         `<div class="alert alert-${type} alert-dismissible fade show" role="alert">`,
@@ -429,11 +446,11 @@ const alert = (message, type) => {
         '</div>'
     ].join('')
 
-    alertPlaceholder.append(wrapper)
+    target.append(wrapper)
 }
 function startAttack() {
     if (parseInt($("#arqueiros-selecionados").val()) < 1 && parseInt($("#lanceiros-selecionados").val()) < 1) {
-        alert('Não pode atacar sem tropas!', 'danger');
+        alert($("#alerta-tropas-insuficientes"), 'Não pode atacar sem tropas!', 'danger');
         setTimeout(function () { $(".alert").alert('close'); }, 1000);
     } else {
         var lance = parseInt($("#lanceiros-selecionados").val());
@@ -473,7 +490,7 @@ function startTimer(minutes) {
     }
     var refreshIntervalId = setInterval(makeTimer, 1000);
 
-    setTimeout(function () { clearInterval(refreshIntervalId); $("#clocks").html(""); endTime = 0; showAttackResult() }, (minutes * 60000));
+    setTimeout(function () { clearInterval(refreshIntervalId); $("#clocks").html(""); $("#clocks").removeClass("bg-warning text-dark bg-opacity-50"); endTime = 0; showAttackResult() }, (minutes * 60000));
 }
 
 function showAttackResult() {
@@ -493,8 +510,8 @@ function makeTimer() {
     if (hours < "10") { hours = "0" + hours; }
     if (minutes < "10") { minutes = "0" + minutes; }
     if (seconds < "10") { seconds = "0" + seconds; }
-
-    $("#clocks").html("Ataque em curso: " + hours + ":" + minutes + ":" + seconds);
+    $("#clocks").addClass("bg-warning text-dark bg-opacity-50");
+    $("#clocks").html("Ataque retorna:<br>" + hours + ":" + minutes + ":" + seconds);
 }
 
 function showTask(building, value, key) {
@@ -555,8 +572,12 @@ function confirmNewRoutine() {
     var newName = $("#nomeDeRotina").val();
     if (!mapOfRoutines.has(newName)) {
         createRoutine(newName, creatingRoutine);
-        $('#select-rotina').append(`<option onclick="updatePrize(this)">${newName}</option>`);
-        
+        $('#select-rotina').append(`<option value="${newName}">${newName}</option>`);
+        $('#confirmar-nova-rotina').modal('hide');
+        setTimeout(openBlock(0), 1000);
+        creatingRoutine = [];
+    } else {
+        alert($("#alerta-nome-ja-existente"), 'Esse nome já corresponde a uma rotina!', 'danger');
     }
 }
 
@@ -594,7 +615,7 @@ function addExerciseToCreateRoutine() {
         <td><button class="btn-close" type="button" aria-label="Close" onclick="removeExerciseFromCreateRoutine(this, ${numeroSequencial})"></button>
         </tr>
         <tr>
-        <td><span id="adicionar-exercicio-button" data-bs-toggle="modal" data-bs-target="#adicionar-exercicio-modal"
+        <td colspan="4"><span id="adicionar-exercicio-button" data-bs-toggle="modal" data-bs-target="#adicionar-exercicio-modal"
         style="cursor: pointer;">
         <button class="btn btn-outline-info"
             onclick="">Adicionar tarefa</button>
@@ -613,5 +634,48 @@ function removeExerciseFromCreateRoutine(element, number) {
     numeroSequencial--;
     creatingRoutine.splice(number - 1, 1);
     console.log($(element).parent().parent().remove())
+}
 
+function generateTerritoryCode() {
+    $("#generated-self-code").val(territoryCode);
+}
+
+function joinTerritory() {
+    var codeEntered = $("#codigo-territorio").val();
+    if (codeEntered === territoryCode) {
+        joinedTerritory = true;
+        setTimeout(openBlock(3), 1000);
+    } else {
+        alert($("#alerta-territorio-inexistente"), 'Esse território não existe!', 'danger');
+    }
+}
+
+const copyToClipboard = async () => {
+    try {
+        const element = $(".user-select-all");
+        await navigator.clipboard.writeText(element.val());
+        console.log("Text copied to clipboard!");
+        // Optional: Display a success message to the user
+    } catch (error) {
+        console.error("Failed to copy to clipboard:", error);
+        // Optional: Display an error message to the user
+    }
+};
+
+function updateMusicVolume() {
+    $("#volume-da-musica").html("Volume da música: " + $("#music-volume").val());
+}
+
+function changeVillageName() {
+    var element = $("#nomeDaAldeia");
+    if (element.val().length) {
+        villageName = element.val();
+    }
+    $(".nome-da-aldeia").html(villageName);
+    $("#nomeDaAldeia").attr("placeholder", villageName);
+}
+
+function confirmChanges() {
+    changeVillageName();
+    console.log("confirmed!");
 }
