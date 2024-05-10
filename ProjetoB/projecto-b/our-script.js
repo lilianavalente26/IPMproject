@@ -1,3 +1,6 @@
+const failedAudio = new Audio("minimal-fail.mp3");
+const successAudio = new Audio("minimal-success.mp3");
+
 /**
  * Code that executes when a click happens inside the grid.
  *
@@ -18,7 +21,15 @@
  * is the top left corner of the grid.
  */
 function processClick(interaction) {
-    //
+    successAudio.currentTime=0;
+    failedAudio.currentTime=0;
+
+    if (interaction.type === 'success'){
+        successAudio.play();
+    } else {
+        failedAudio.play();
+    }
+
 }
 
 /**

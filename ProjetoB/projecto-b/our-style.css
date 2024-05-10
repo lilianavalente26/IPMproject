@@ -1,9 +1,21 @@
 .target {
-    width: 20px;
-    height: 20px;
+    width: 92%;
+    height: 92%;
     border: 1px solid #808080;
 }
 
+.goal-1 {
+    background-color: pink;
+}
+
 .goal-0 {
-    background-color: #aaaaaa;
+    background-color: orangered;
+}
+
+.goal-0:hover {
+    width: 98%;
+    height: 98%;
+    background-color: rgb(192, 2, 2);
+    border: 5px solid yellow;
+    cursor: pointer;
 }
